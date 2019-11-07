@@ -1,3 +1,4 @@
 Añadir Menu
 Validar entradas
 cambiar a coleccion
+Aumentar la parte de foto
