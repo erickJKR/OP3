@@ -2,3 +2,4 @@ Añadir Menu
 Validar entradas
 cambiar a coleccion
 Mejorar Diseño
+NO se registre con usuario existente
