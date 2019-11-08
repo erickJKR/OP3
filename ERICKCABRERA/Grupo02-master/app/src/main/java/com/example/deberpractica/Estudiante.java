@@ -1,6 +1,4 @@
 package com.example.deberpractica;
-
-public class Estudiante {
 import java.io.Serializable;
 public class Estudiante implements Serializable {
     private String usuario;
@@ -14,8 +12,7 @@ public class Estudiante implements Serializable {
     private String fechaNacimiento;
     private String[ ] asignatura = new String[2];
     private String becado;
-
-
+    
     public Estudiante(String usuario, String clave, String nombre, String apellido, String email, String celular, String foto, String genero, String fechaNacimiento, String[] asignatura, String becado) {
         this.usuario = usuario;
         this.clave = clave;
