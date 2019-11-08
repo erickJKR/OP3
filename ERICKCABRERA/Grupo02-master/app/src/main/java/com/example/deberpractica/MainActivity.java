@@ -133,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public  String[] leer(){
-        String contenido="";
         FileInputStream fin=null;
         String matriz[] = new String[1000];
 
@@ -146,13 +145,7 @@ public class MainActivity extends AppCompatActivity {
         }
         InputStreamReader archivo=new InputStreamReader(fin);
         BufferedReader br=new BufferedReader(archivo);
-        int ascii;
         try{
-            //while ((ascii=br.read())!= -1){
-              // char caracter=(char) ascii;
-               //contenido+=caracter;
-
-            //}
             String linea;
             int i = 0;
             while ((linea = br.readLine()) != null) {
@@ -165,17 +158,12 @@ public class MainActivity extends AppCompatActivity {
         }catch (IOException e){
             e.printStackTrace();
         }
-        //Log.e(tag="leer",contenido);
-
         String usuariosDetalles[] = new String[n];
         for (int i = 0; i < n; i++) {
             System.out.println(matriz[i]);
             usuariosDetalles[i]  = matriz[i] ;
             System.out.println(usuariosDetalles[i]+"metodo leer");
         }
-//       claveTextView.setText(usuariosDetalles[n-1]);
-        //System.out.println(usuariosDetalles[n-1]+"llllllllllllllllllllllllll");
-
         return usuariosDetalles;
     }
 
