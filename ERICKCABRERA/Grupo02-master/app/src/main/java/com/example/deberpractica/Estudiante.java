@@ -1,6 +1,8 @@
 package com.example.deberpractica;
 
 public class Estudiante {
+import java.io.Serializable;
+public class Estudiante implements Serializable {
     private String usuario;
     private String clave;
     private String nombre;
