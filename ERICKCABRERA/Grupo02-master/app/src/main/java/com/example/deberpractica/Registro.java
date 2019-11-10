@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -107,10 +108,16 @@ public class Registro extends AppCompatActivity {
                 }else{
                     becadoTxt="no";
                 }
-                archivos.escribir(usuarioTxt,claveTxt,nombreTxt,apellidoTxt,emailTxt,celularTxt,generoTxt,fechaTxt,asignaturas,becadoTxt);
-                Intent intent=new Intent(Registro.this,MainActivity.class);
-                //intent.putExtra()
-                startActivity(intent);
+
+                if (!archivos.leerColumna(0).contains(usuarioTxt)) {
+                    archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
+                    Intent intent = new Intent(Registro.this, MainActivity.class);
+                    //intent.putExtra()
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(Registro.this,"Nombre de usuario ya existe",Toast.LENGTH_LONG).show();
+
+                }
             }
         });
     }
