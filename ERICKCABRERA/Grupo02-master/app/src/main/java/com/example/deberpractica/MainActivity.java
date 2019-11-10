@@ -17,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn1;
@@ -43,25 +44,25 @@ public class MainActivity extends AppCompatActivity {
                 usuarioTxt= (String) usuarioTextView.getText().toString();
                 claveTxt= (String) claveTextView.getText().toString();
 
-                String usuariosDetalles[] =archivos.leer();
-                String usuariosAreglos[]= new String[usuariosDetalles.length];
-                String claveAreglos[] = new String[usuariosDetalles.length];
-                for (int i = 0; i < usuariosDetalles.length; i++) {
-                    System.out.println(usuariosDetalles[i]+"leer");
-                    String [] parts = usuariosDetalles[i].split(" ");
+                ArrayList<String> usuariosDetalles =archivos.leer();
+                ArrayList<String> usuariosAreglos= new ArrayList<String>();
+                ArrayList<String> claveAreglos= new ArrayList<String>();;
+                for (int i = 0; i < usuariosDetalles.size(); i++) {
+                    System.out.println(usuariosDetalles.get(i)+"leer");
+                    String [] parts = usuariosDetalles.get(i).split(" ");
                     System.out.println(parts.length+"tamaño");
                     String usuarioi = parts[0];
                     System.out.println(usuarioi+" vector usuario");
                     String clavei = parts[1];
                     System.out.println(usuarioi + " - " + clavei);
-                    usuariosAreglos[i] = usuarioi;
-                    claveAreglos[i] = clavei;
+                    usuariosAreglos.add(usuarioi);
+                    claveAreglos.add(clavei);
                     // }
                 }
 
-                for (int i = 0; i < usuariosDetalles.length; i++) {
-                    if (usuariosAreglos[i].equals(usuarioTxt)){
-                        if(claveAreglos[i].equals(claveTxt)){
+                for (int i = 0; i < usuariosDetalles.size(); i++) {
+                    if (usuariosAreglos.get(i).equals(usuarioTxt)){
+                        if(claveAreglos.get(i).equals(claveTxt)){
                             System.out.println("Usuario y clave correcto");
                             Toast.makeText(MainActivity.this,"Usuario y clave correcto",Toast.LENGTH_LONG).show();
                             Intent intent=new Intent(MainActivity.this,Listar.class);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     }else{
-                        if (i==usuariosAreglos.length-1){
+                        if (i==usuariosAreglos.size()-1){
                             System.out.println("No existe Usuario");
                             Toast.makeText(MainActivity.this,"No existe Usuario",Toast.LENGTH_LONG).show();
                         }
