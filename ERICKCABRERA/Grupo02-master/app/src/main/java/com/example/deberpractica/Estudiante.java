@@ -1,5 +1,7 @@
 package com.example.deberpractica;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 public class Estudiante implements Serializable {
     private String usuario;
     private String clave;
@@ -10,12 +12,12 @@ public class Estudiante implements Serializable {
     private String foto;
     private String genero;
     private String fechaNacimiento;
-    private String[ ] asignatura = new String[2];
+    //private String[ ] asignatura = new String[2];
     private String becado;
+    private ArrayList<String> asignatura;
 
 
-
-    public Estudiante(String usuario, String clave, String nombre, String apellido, String email, String celular, String foto, String genero, String fechaNacimiento, String[] asignatura, String becado) {
+    public Estudiante(String usuario, String clave, String nombre, String apellido, String email, String celular, String foto, String genero, String fechaNacimiento, ArrayList<String> asignatura, String becado) {
         this.usuario = usuario;
         this.clave = clave;
         this.nombre = nombre;
@@ -38,8 +40,9 @@ public class Estudiante implements Serializable {
         this.foto = contenido;
         this.genero = contenido;
         this.fechaNacimiento = fechaNacimiento;
-        String[ ] asig ={"asignatura","","","",""};
-                this.asignatura =asig ;
+        //String[ ] asig ={"asignatura","","","",""};
+          //      this.asignatura =asig ;
+        this.asignatura=new ArrayList<>();
         this.becado = contenido;
     }
     public String getUsuario() {
@@ -114,11 +117,11 @@ public class Estudiante implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String[] getAsignatura() {
+    public ArrayList<String> getAsignatura() {
         return asignatura;
     }
 
-    public void setAsignatura(String[] asignatura) {
+    public void setAsignatura(ArrayList<String> asignatura) {
         this.asignatura = asignatura;
     }
 
@@ -128,5 +131,18 @@ public class Estudiante implements Serializable {
 
     public void setBecado(String becado) {
         this.becado = becado;
+    }
+    public String toString() {
+        return "Usuario{" +
+                "usuario=" + usuario + '\'' +
+                "contrasemia="+ clave+ '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", correo='" + email + '\'' +
+                ", celular='" + celular + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +'\'' +
+                ", genero='" + genero + '\'' +
+                ", becado=" + becado +
+                '}';
     }
 }
