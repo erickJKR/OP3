@@ -12,7 +12,9 @@ public class Estudiante implements Serializable {
     private String fechaNacimiento;
     private String[ ] asignatura = new String[2];
     private String becado;
-    
+
+
+
     public Estudiante(String usuario, String clave, String nombre, String apellido, String email, String celular, String foto, String genero, String fechaNacimiento, String[] asignatura, String becado) {
         this.usuario = usuario;
         this.clave = clave;
@@ -26,7 +28,20 @@ public class Estudiante implements Serializable {
         this.asignatura = asignatura;
         this.becado = becado;
     }
-
+    public Estudiante(String contenido){
+        this.usuario = contenido;
+        this.clave = contenido;
+        this.nombre = contenido;
+        this.apellido = contenido;
+        this.email = contenido;
+        this.celular = contenido;
+        this.foto = contenido;
+        this.genero = contenido;
+        this.fechaNacimiento = fechaNacimiento;
+        String[ ] asig ={"asignatura","","","",""};
+                this.asignatura =asig ;
+        this.becado = contenido;
+    }
     public String getUsuario() {
         return usuario;
     }
