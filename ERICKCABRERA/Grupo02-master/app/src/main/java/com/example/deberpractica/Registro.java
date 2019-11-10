@@ -31,12 +31,8 @@ public class Registro extends AppCompatActivity {
     private Spinner sp1,sp2,sp3;
     private Switch sw1;
     private Button btn1;
+    private LeerArchivo archivos=new LeerArchivo();
 
-    private String archivo ="miarchivo6";
-    private String carpeta= "/archivos/";
-    File file;
-    String file_path="";
-    String name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,20 +55,7 @@ public class Registro extends AppCompatActivity {
         sp3=(Spinner)findViewById(R.id.spinner3);
         sw1=(Switch)findViewById(R.id.switch1);
         btn1=(Button) findViewById(R.id.button);
-        this.file_path=(Environment.getExternalStorageDirectory()+this.carpeta);
-        File localFile=new File(this.file_path);
-        if(!localFile.exists()){
-            localFile.mkdir();
-        }
-        this.name=(this.archivo +".txt");
-        this.file=new File(localFile,this.name);
-        try{
-            this.file.createNewFile();
-            escribir("admin", "admin","david","lara","dllara@uce.edu.ec","0998124155","hombre","23/10/1995","Fisica-Ciencias-Informatica-","si");
 
-        }catch (IOException e){
-            e.printStackTrace();
-        }
         String [] dia ={"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15}","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
         ArrayAdapter <String> adapter=new ArrayAdapter <String> (this,android.R.layout.simple_list_item_1,dia);
         sp3.setAdapter(adapter);
@@ -124,7 +107,7 @@ public class Registro extends AppCompatActivity {
                 }else{
                     becadoTxt="no";
                 }
-                escribir(usuarioTxt,claveTxt,nombreTxt,apellidoTxt,emailTxt,celularTxt,generoTxt,fechaTxt,asignaturas,becadoTxt);
+                archivos.escribir(usuarioTxt,claveTxt,nombreTxt,apellidoTxt,emailTxt,celularTxt,generoTxt,fechaTxt,asignaturas,becadoTxt);
                 Intent intent=new Intent(Registro.this,MainActivity.class);
                 //intent.putExtra()
                 startActivity(intent);
@@ -132,26 +115,5 @@ public class Registro extends AppCompatActivity {
         });
     }
 
-    public void escribir(String usua, String clave,String nombre,String apellido,String email,String telefono,String genero,String fecha,String asignaturas,String becado){
-        FileWriter fichero=null;
-        PrintWriter pw =null;
-        try{
-            //fichero=new FileWriter(file);
-            fichero=new FileWriter(file.getAbsoluteFile(), true);
-            pw=new PrintWriter(fichero);
-            //pw.println(usuarioTextView.getText().toString());
-            pw.println(usua+" "+clave+" "+nombre+" "+apellido+" "+email+" "+telefono+" "+genero+" "+fecha+" "+asignaturas+" "+becado);
-            pw.flush();
-            pw.close();
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            try{
-                if (null!= fichero)
-                    fichero.close();
-            }catch (Exception e2){
-                e2.printStackTrace();
-            }
-        }
-}
+
 }
