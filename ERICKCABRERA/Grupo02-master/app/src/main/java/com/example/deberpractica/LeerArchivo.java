@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class LeerArchivo {
     private String archivo = "miarchivo9";
@@ -62,10 +63,10 @@ public class LeerArchivo {
             }
         }
     }
-    public  String[] leer(){
+    public  ArrayList<String> leer(){
         FileInputStream fin=null;
-        String matriz[] = new String[1000];
-
+        //String matriz[] = new String[1000];
+        ArrayList<String> matriz = new ArrayList<String>();
         int n=0;
         try{
             fin= new FileInputStream(file);
@@ -77,24 +78,39 @@ public class LeerArchivo {
         BufferedReader br=new BufferedReader(archivo);
         try{
             String linea;
-            int i = 0;
+            //int i = 0;
             while ((linea = br.readLine()) != null) {
-                matriz[i] = linea;
-                i=i+1;
+                //matriz[i] = linea;
+                matriz.add(linea);
+                //i=i+1;
             }
-            n=i;
+            n=matriz.size()+1;
 
 
         }catch (IOException e){
             e.printStackTrace();
         }
-        String usuariosDetalles[] = new String[n];
-        for (int i = 0; i < n; i++) {
-            System.out.println(matriz[i]);
-            usuariosDetalles[i]  = matriz[i] ;
-            System.out.println(usuariosDetalles[i]+"metodo leer");
+
+        return matriz;
+    }
+    public  ArrayList<String> leerColumna(int j){
+        ArrayList<String> usuariosAreglos= new ArrayList<String>();
+        //ArrayList<String> claveAreglos= new ArrayList<String>();
+        ArrayList<String> usuariosDetalles =this.leer();
+        for (int i = 0; i < usuariosDetalles.size(); i++) {
+            System.out.println(usuariosDetalles.get(i)+"leer");
+            String [] parts = usuariosDetalles.get(i).split(" ");
+            System.out.println(parts.length+"tamaño");
+            String usuarioi = parts[j];
+            System.out.println(usuarioi+" vector usuario");
+            //String clavei = parts[1];
+            //System.out.println(usuarioi + " - " + clavei);
+            usuariosAreglos.add(usuarioi);
+            //claveAreglos.add(clavei);
+
+            // }
         }
-        return usuariosDetalles;
+        return usuariosAreglos;
     }
 }
 
