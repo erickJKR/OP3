@@ -16,5 +16,5 @@ import java.util.ArrayList;
 public class ListaEstudiantes {
     Estudiante u;
     ArrayList<Estudiante> lista;
-    
+
 }
