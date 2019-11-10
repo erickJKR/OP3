@@ -86,6 +86,10 @@ public class MainActivity extends AppCompatActivity {
                         if(claveAreglos[i].equals(claveTxt)){
                             System.out.println("Usuario y clave correcto");
                             Toast.makeText(MainActivity.this,"Usuario y clave correcto",Toast.LENGTH_LONG).show();
+                            Intent intent=new Intent(MainActivity.this,Listar.class);
+                            //intent.putExtra()
+                            startActivity(intent);
+
                         }else{
                             System.out.println("Clave incorrecta");
                             Toast.makeText(MainActivity.this,"Clave incorrecta",Toast.LENGTH_LONG).show();
