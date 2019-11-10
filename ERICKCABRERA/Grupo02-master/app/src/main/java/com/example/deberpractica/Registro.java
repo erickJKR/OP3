@@ -84,20 +84,26 @@ public class Registro extends AppCompatActivity {
                 }else{
                     generoTxt="mujer";
                 }
+                int contadorCheck=0;
                 if (check1.isChecked()==true){
                     asignaturas=asignaturas+"Ciencias-";
+                    contadorCheck=contadorCheck+1;
                 }
                 if (check2.isChecked()==true){
                     asignaturas=asignaturas+"Filosofia-";
+                    contadorCheck=contadorCheck+1;
                 }
                 if (check3.isChecked()==true){
                     asignaturas=asignaturas+"Matematicas-";
+                    contadorCheck=contadorCheck+1;
                 }
                 if (check4.isChecked()==true){
                     asignaturas=asignaturas+"Informatica-";
+                    contadorCheck=contadorCheck+1;
                 }
                 if (check5.isChecked()==true){
                     asignaturas=asignaturas+"Deporte-";
+                    contadorCheck=contadorCheck+1;
                 }
                 String dia=sp2.getSelectedItem().toString();
                 String mes=sp3.getSelectedItem().toString();
@@ -109,13 +115,21 @@ public class Registro extends AppCompatActivity {
                     becadoTxt="no";
                 }
 
-                if (!archivos.leerColumna(0).contains(usuarioTxt)) {
+                if ((!archivos.leerColumna(0).contains(usuarioTxt))&&(contadorCheck>=3 ) ) {
                     archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
                     Intent intent = new Intent(Registro.this, MainActivity.class);
                     //intent.putExtra()
                     startActivity(intent);
                 } else{
-                    Toast.makeText(Registro.this,"Nombre de usuario ya existe",Toast.LENGTH_LONG).show();
+                    if(archivos.leerColumna(0).contains(usuarioTxt)){
+                        Toast.makeText(Registro.this,"Nombre de usuario ya existe",Toast.LENGTH_LONG).show();
+
+                    }
+                    if(contadorCheck<3){
+                        Toast.makeText(Registro.this,"Esligaalmenos 3 asignaturas",Toast.LENGTH_LONG).show();
+
+                    }
+
 
                 }
             }
