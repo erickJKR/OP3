@@ -33,7 +33,7 @@ public class Registro extends AppCompatActivity {
     private Switch sw1;
     private Button btn1;
     private LeerArchivo archivos=new LeerArchivo();
-
+    private ListaEstudiantes arch=new ListaEstudiantes();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,9 +117,11 @@ public class Registro extends AppCompatActivity {
 
                 if ((!archivos.leerColumna(0).contains(usuarioTxt))&&(contadorCheck>=3 ) ) {
                     archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
+                    arch.escribir();
                     Intent intent = new Intent(Registro.this, MainActivity.class);
                     //intent.putExtra()
                     startActivity(intent);
+
                 } else{
                     if(archivos.leerColumna(0).contains(usuarioTxt)){
                         Toast.makeText(Registro.this,"Nombre de usuario ya existe",Toast.LENGTH_LONG).show();
