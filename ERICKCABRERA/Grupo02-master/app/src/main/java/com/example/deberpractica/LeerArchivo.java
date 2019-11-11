@@ -178,9 +178,7 @@ public class LeerArchivo {
             localFile.mkdir();
         }
         this.name = (this.archivo1 + ".txt");
-        this.file = new
-
-                File(localFile, this.name1);
+        this.file1 = new File(localFile, this.name1);
         try {
             this.file1.createNewFile();
             if(!file1.exists()) {
@@ -193,8 +191,8 @@ public class LeerArchivo {
         FileWriter fichero1=null;
         PrintWriter pw =null;
         try{
-            fichero1=new FileWriter(file1);
-            //fichero=new FileWriter(file.getAbsoluteFile(), true);
+            //fichero1=new FileWriter(file1);
+            fichero1=new FileWriter(file1.getAbsoluteFile(),true);
             pw=new PrintWriter(fichero1);
             //pw.println(usuarioTextView.getText().toString());
             pw.println(this.estudianteToJson());
