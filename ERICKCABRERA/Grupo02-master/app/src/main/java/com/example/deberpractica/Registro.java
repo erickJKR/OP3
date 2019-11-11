@@ -121,6 +121,7 @@ public class Registro extends AppCompatActivity {
                     Intent intent = new Intent(Registro.this, MainActivity.class);
                     //intent.putExtra()
                     startActivity(intent);
+                    finish();
 
                 } else{
                     if(archivos.leerColumna(0).contains(usuarioTxt)){
