@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     String usuarioTxt;
     String claveTxt;
     private LeerArchivo archivos=new LeerArchivo();
-        ListaEstudiantes listarEstudiantes;
+    private ListaEstudiantes arch=new ListaEstudiantes();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btn2=(Button) findViewById(R.id.buttonRegistro);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
-//        archivos.estudianteToJson();
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
