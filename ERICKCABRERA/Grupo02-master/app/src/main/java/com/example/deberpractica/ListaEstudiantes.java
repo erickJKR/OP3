@@ -27,7 +27,7 @@ public class ListaEstudiantes {
     ArrayList<Estudiante> lista;
 
     private String archivo = "Json";
-    private String carpeta = "/archivos/";
+    private String carpeta = "/Download/";
     File file;
     String file_path = "";
     String name = "";
