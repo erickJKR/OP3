@@ -114,30 +114,40 @@ public class Registro extends AppCompatActivity {
                 }else{
                     becadoTxt="no";
                 }
+                if(!usuarioTxt.isEmpty()&&!claveTxt.isEmpty()&&validarEntrada(usuarioTxt)&&validarEntrada(claveTxt)&&validarEntrada(nombreTxt)&&validarEntrada(apellidoTxt)&&validarEntrada(emailTxt)&&validarEntrada(celularTxt)) {
+                    if ((!archivos.leerColumna(0).contains(usuarioTxt)) && (contadorCheck >= 3)) {
+                        archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
+                        arch.escribir();
+                        Intent intent = new Intent(Registro.this, MainActivity.class);
+                        //intent.putExtra()
+                        startActivity(intent);
+                        finish();
 
-                if ((!archivos.leerColumna(0).contains(usuarioTxt))&&(contadorCheck>=3 ) ) {
-                    archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
-                    arch.escribir();
-                    Intent intent = new Intent(Registro.this, MainActivity.class);
-                    //intent.putExtra()
-                    startActivity(intent);
-                    finish();
+                    } else {
+                        if (archivos.leerColumna(0).contains(usuarioTxt)) {
+                            Toast.makeText(Registro.this, "Nombre de usuario ya existe", Toast.LENGTH_LONG).show();
 
-                } else{
-                    if(archivos.leerColumna(0).contains(usuarioTxt)){
-                        Toast.makeText(Registro.this,"Nombre de usuario ya existe",Toast.LENGTH_LONG).show();
+                        }
+                        if (contadorCheck < 3) {
+                            Toast.makeText(Registro.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
+
+                        }
+
 
                     }
-                    if(contadorCheck<3){
-                        Toast.makeText(Registro.this,"Esligaalmenos 3 asignaturas",Toast.LENGTH_LONG).show();
-
-                    }
-
-
+                }else{
+                    Toast.makeText(Registro.this, "Campos vacios o espacios en blanco", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
+public boolean validarEntrada(String str){
+        if (str.indexOf(" ")<0){
+            return true;
+        }else{
+            return false;
+        }
+}
 
 }
