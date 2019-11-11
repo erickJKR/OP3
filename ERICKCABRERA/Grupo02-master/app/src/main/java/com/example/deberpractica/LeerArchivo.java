@@ -17,13 +17,13 @@ import java.util.ArrayList;
 
 public class LeerArchivo {
     private String archivo = "miarchivo9";
-    private String carpeta = "/archivos/";
+    private String carpeta = "/Download/";
     File file;
     String file_path = "";
     String name = "";
 
     private String archivo1 = "Json";
-    private String carpeta1 = "/archivos/";
+    private String carpeta1 = "/Download/";
     File file1;
     String file_path1 = "";
     String name1 = "";
