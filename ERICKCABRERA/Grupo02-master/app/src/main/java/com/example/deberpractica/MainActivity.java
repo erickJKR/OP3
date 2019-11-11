@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent=new Intent(MainActivity.this,Listar.class);
                             //intent.putExtra()
                             startActivity(intent);
+                            finish();
 
                         }else{
                             System.out.println("Clave incorrecta");
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this,Registro.class);
                         //intent.putExtra()
                         startActivity(intent);
+
             }
         });
     }
