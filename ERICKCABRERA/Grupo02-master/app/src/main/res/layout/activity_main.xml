@@ -75,7 +75,7 @@
         android:ems="10"
         android:focusable="auto"
         android:hint="clave"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:selectAllOnFocus="true"
         android:singleLine="false"
         android:textColor="#FFFFFF"
