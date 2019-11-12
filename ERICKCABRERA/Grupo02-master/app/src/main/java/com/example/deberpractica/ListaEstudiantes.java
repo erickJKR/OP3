@@ -60,8 +60,8 @@ public class ListaEstudiantes {
         FileWriter fichero=null;
         PrintWriter pw =null;
         try{
-            //fichero=new FileWriter(file);
-            fichero=new FileWriter(file.getAbsoluteFile(), true);
+            fichero=new FileWriter(file);
+            //fichero=new FileWriter(file.getAbsoluteFile(), true);
             pw=new PrintWriter(fichero);
             //pw.println(usuarioTextView.getText().toString());
             pw.println(arch.estudianteToJson());
