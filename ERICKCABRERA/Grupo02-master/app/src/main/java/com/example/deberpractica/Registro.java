@@ -138,9 +138,10 @@ public class Registro extends AppCompatActivity {
                         }
 
                     }
-
                 }
             }
+            });
+        }
 
 public boolean validarEntrada(String str){
         if (str.indexOf(" ")<0){
