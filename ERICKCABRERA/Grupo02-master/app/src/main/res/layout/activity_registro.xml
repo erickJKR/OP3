@@ -89,7 +89,7 @@
         android:layout_marginStart="60dp"
         android:ems="10"
         android:hint="email"
-        android:inputType="textEmailAddress"
+        android:inputType="textWebEmailAddress"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
