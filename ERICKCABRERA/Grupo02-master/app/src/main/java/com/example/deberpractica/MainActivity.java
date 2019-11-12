@@ -106,6 +106,8 @@ public void salirApp(View view){
 @Override
 public boolean onCreateOptionsMenu(Menu miMenu){
 getMenuInflater().inflate(R.menu.menu, miMenu);
+
+
 return true;
 }
 public void cargarpreferencias(){
