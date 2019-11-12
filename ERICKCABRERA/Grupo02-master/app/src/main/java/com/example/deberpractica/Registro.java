@@ -70,73 +70,84 @@ public class Registro extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usuarioTxt= (String) usuario.getText().toString();
-                String claveTxt= (String) clave.getText().toString();
-                String nombreTxt=(String) nombre.getText().toString();
-                String apellidoTxt=(String) apellido.getText().toString();
-                String emailTxt=(String) email.getText().toString();
-                String celularTxt=(String) celular.getText().toString();
+                String usuarioTxt = (String) usuario.getText().toString();
+                String claveTxt = (String) clave.getText().toString();
+                String nombreTxt = (String) nombre.getText().toString();
+                String apellidoTxt = (String) apellido.getText().toString();
+                String emailTxt = (String) email.getText().toString();
+                String celularTxt = (String) celular.getText().toString();
                 String generoTxt;
                 String becadoTxt;
-                String asignaturas="";
-                if (rb1.isChecked()==true){
-                    generoTxt="hombre";
-                }else{
-                    generoTxt="mujer";
+                String asignaturas = "";
+                if (rb1.isChecked() == true) {
+                    generoTxt = "hombre";
+                } else {
+                    generoTxt = "mujer";
                 }
-                int contadorCheck=0;
-                if (check1.isChecked()==true){
-                    asignaturas=asignaturas+"Ciencias-";
-                    contadorCheck=contadorCheck+1;
+                int contadorCheck = 0;
+                if (check1.isChecked() == true) {
+                    asignaturas = asignaturas + "Ciencias-";
+                    contadorCheck = contadorCheck + 1;
                 }
-                if (check2.isChecked()==true){
-                    asignaturas=asignaturas+"Filosofia-";
-                    contadorCheck=contadorCheck+1;
+                if (check2.isChecked() == true) {
+                    asignaturas = asignaturas + "Filosofia-";
+                    contadorCheck = contadorCheck + 1;
                 }
-                if (check3.isChecked()==true){
-                    asignaturas=asignaturas+"Matematicas-";
-                    contadorCheck=contadorCheck+1;
+                if (check3.isChecked() == true) {
+                    asignaturas = asignaturas + "Matematicas-";
+                    contadorCheck = contadorCheck + 1;
                 }
-                if (check4.isChecked()==true){
-                    asignaturas=asignaturas+"Informatica-";
-                    contadorCheck=contadorCheck+1;
+                if (check4.isChecked() == true) {
+                    asignaturas = asignaturas + "Informatica-";
+                    contadorCheck = contadorCheck + 1;
                 }
-                if (check5.isChecked()==true){
-                    asignaturas=asignaturas+"Deporte-";
-                    contadorCheck=contadorCheck+1;
+                if (check5.isChecked() == true) {
+                    asignaturas = asignaturas + "Deporte-";
+                    contadorCheck = contadorCheck + 1;
                 }
-                String dia=sp2.getSelectedItem().toString();
-                String mes=sp3.getSelectedItem().toString();
-                String anio=sp1.getSelectedItem().toString();
-                String fechaTxt=dia+"/"+mes+"/"+anio;
-                if (sw1.isChecked()==true){
-                    becadoTxt="si";
-                }else{
-                    becadoTxt="no";
+                String dia = sp2.getSelectedItem().toString();
+                String mes = sp3.getSelectedItem().toString();
+                String anio = sp1.getSelectedItem().toString();
+                String fechaTxt = dia + "/" + mes + "/" + anio;
+                if (sw1.isChecked() == true) {
+                    becadoTxt = "si";
+                } else {
+                    becadoTxt = "no";
                 }
+                if (!usuarioTxt.isEmpty() && !claveTxt.isEmpty() && validarEntrada(usuarioTxt) && validarEntrada(claveTxt) && validarEntrada(nombreTxt) && validarEntrada(apellidoTxt) && validarEntrada(emailTxt) && validarEntrada(celularTxt)) {
+                    if ((!archivos.leerColumna(0).contains(usuarioTxt)) && (contadorCheck >= 3)) {
+                        archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
+                        arch.escribir();
+                        Intent intent = new Intent(Registro.this, MainActivity.class);
+                        //intent.putExtra()
+                        startActivity(intent);
+                        finish();
 
-                if ((!archivos.leerColumna(0).contains(usuarioTxt))&&(contadorCheck>=3 ) ) {
-                    archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
-                    arch.escribir();
-                    Intent intent = new Intent(Registro.this, MainActivity.class);
-                    //intent.putExtra()
-                    startActivity(intent);
+                    } else {
+                        if (archivos.leerColumna(0).contains(usuarioTxt)) {
+                            Toast.makeText(Registro.this, "Nombre de usuario ya existe", Toast.LENGTH_LONG).show();
 
-                } else{
-                    if(archivos.leerColumna(0).contains(usuarioTxt)){
-                        Toast.makeText(Registro.this,"Nombre de usuario ya existe",Toast.LENGTH_LONG).show();
+                        }
+                        if (contadorCheck < 3) {
+                            Toast.makeText(Registro.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
+
+                        }
+                        if (contadorCheck < 3) {
+                            Toast.makeText(Registro.this, "Escoja al menos 3 asignaturas", Toast.LENGTH_LONG).show();
+
+                        }
 
                     }
-                    if(contadorCheck<3){
-                        Toast.makeText(Registro.this,"Escoja al menos 3 asignaturas",Toast.LENGTH_LONG).show();
-
-                    }
-
 
                 }
             }
-        });
-    }
 
+public boolean validarEntrada(String str){
+        if (str.indexOf(" ")<0){
+            return true;
+        }else{
+            return false;
+        }
+}
 
 }
