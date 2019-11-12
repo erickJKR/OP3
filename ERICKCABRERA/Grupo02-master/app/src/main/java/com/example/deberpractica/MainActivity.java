@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this,Registro.class);
                         //intent.putExtra()
                         startActivity(intent);
+                        eliminarpreferencias();
+                        cargarpreferencias();
 
             }
         });
