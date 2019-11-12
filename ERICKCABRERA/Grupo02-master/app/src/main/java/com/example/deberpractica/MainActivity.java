@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -98,12 +97,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-public void ejecutarLogin(View view){
-        Intent i=new Intent(this, Registro.class )
-                startActivity(i);
-
-}
-
 public void salirApp(View view){
         finish();
 }
@@ -112,24 +105,7 @@ public boolean onCreateOptionsMenu(Menu miMenu){
 getMenuInflater().inflate(R.menu.menu, miMenu);
 return true;
 }
-@Override
-    public  boolean onOptionsItemSelected(MenuItem opcionMenu){
-        int id=opcionMenu.getItemId();
-        if(id==R.id.login){
-            return true;
-        }
-        if(id==R.id.salir){
-       salirApp(null);
-       return true;
-
-        }
-        return  super.onOptionsItemSelected(opcionMenu);
-
-
 }
-
-}
-
 
 
 
