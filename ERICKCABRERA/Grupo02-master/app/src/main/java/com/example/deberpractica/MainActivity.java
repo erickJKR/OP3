@@ -2,7 +2,9 @@ package com.example.deberpractica;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btn2=(Button) findViewById(R.id.buttonRegistro);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
-
+        //cargarpreferencias();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent=new Intent(MainActivity.this,Listar.class);
                             //intent.putExtra()
                             startActivity(intent);
+                            guardarpreferencias();
                             finish();
 
                         }else{
@@ -105,6 +108,30 @@ public boolean onCreateOptionsMenu(Menu miMenu){
 getMenuInflater().inflate(R.menu.menu, miMenu);
 return true;
 }
+public void cargarpreferencias(){
+    SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+    String user=preferencias.getString( "user","No existe la informacion");
+    String pass=preferencias.getString("pass","No existe informacion");
+    usuarioTextView.setText(user);
+    claveTextView.setText(pass);
+}
+
+    public void guardarpreferencias(){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        String user= usuarioTextView.getText().toString();
+        String pass= claveTextView.getText().toString();
+        SharedPreferences.Editor editor=preferencias.edit();
+        editor.putString("user",user);
+        editor.putString("pass",pass);
+        editor.commit();
+    }
+    public void eliminarpreferencias(){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferencias.edit();
+        editor.clear();
+        editor.commit();
+    }
+
 }
 
 
