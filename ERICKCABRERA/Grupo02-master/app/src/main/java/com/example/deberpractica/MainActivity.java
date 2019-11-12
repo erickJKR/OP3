@@ -1,5 +1,6 @@
 package com.example.deberpractica;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -108,11 +110,25 @@ public void salirApp(View view){
 @Override
 public boolean onCreateOptionsMenu(Menu miMenu){
 getMenuInflater().inflate(R.menu.menu, miMenu);
-
-
 return true;
 }
-public void cargarpreferencias(){
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.login:
+
+                return true;
+            case R.id.salir:
+                finish();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void cargarpreferencias(){
     SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
     String user=preferencias.getString( "user","");
     String pass=preferencias.getString("pass","");
