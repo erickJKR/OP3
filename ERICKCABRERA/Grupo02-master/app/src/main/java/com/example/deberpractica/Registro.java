@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Registro extends AppCompatActivity {
     private EditText usuario;
@@ -114,8 +116,8 @@ public class Registro extends AppCompatActivity {
                 } else {
                     becadoTxt = "no";
                 }
-                if (!usuarioTxt.isEmpty() && !claveTxt.isEmpty() && validarEntrada(usuarioTxt) && validarEntrada(claveTxt) && validarEntrada(nombreTxt) && validarEntrada(apellidoTxt) && validarEntrada(emailTxt) && validarEntrada(celularTxt)) {
-                    if ((!archivos.leerColumna(0).contains(usuarioTxt)) && (contadorCheck >= 3)) {
+                if ((!archivos.leerColumna(0).contains(usuarioTxt)) && (contadorCheck >= 3)&&!usuarioTxt.isEmpty() && !claveTxt.isEmpty() && validarEntrada(usuarioTxt) && validarEntrada(claveTxt) && validarEntrada(nombreTxt) && validarEntrada(apellidoTxt) && validarEntrada(emailTxt) && validarEntrada(celularTxt)&&validarEmail(emailTxt)) {
+
                         archivos.escribir(usuarioTxt, claveTxt, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
                         arch.escribir();
                         Intent intent = new Intent(Registro.this, MainActivity.class);
@@ -123,23 +125,22 @@ public class Registro extends AppCompatActivity {
                         startActivity(intent);
                         finish();
 
-                    } else {
-                        if (archivos.leerColumna(0).contains(usuarioTxt)) {
+                    } else if (archivos.leerColumna(0).contains(usuarioTxt)) {
                             Toast.makeText(Registro.this, "Nombre de usuario ya existe", Toast.LENGTH_LONG).show();
 
-                        }
-                        if (contadorCheck < 3) {
+                        } else if (contadorCheck < 3) {
                             Toast.makeText(Registro.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
 
-                        }
-                        if (contadorCheck < 3) {
-                            Toast.makeText(Registro.this, "Escoja al menos 3 asignaturas", Toast.LENGTH_LONG).show();
+                        } else if (usuarioTxt.isEmpty()||claveTxt.isEmpty()) {
+                            Toast.makeText(Registro.this, "datos vacios", Toast.LENGTH_LONG).show();
 
+                        }else if(!validarEmail(emailTxt)){
+                            Toast.makeText(Registro.this, "no se admite email", Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(Registro.this, "no se admite caracter espacio", Toast.LENGTH_LONG).show();
                         }
 
                     }
-                }
-            }
             });
         }
 
@@ -150,5 +151,19 @@ public boolean validarEntrada(String str){
             return false;
         }
 }
+
+    public boolean validarEmail(String str){
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(str);
+
+        if (mather.find() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
