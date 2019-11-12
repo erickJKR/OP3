@@ -63,7 +63,7 @@ public class Registro extends AppCompatActivity {
         String [] mes ={"01","02","03","04","05","06","07","08","09","10","11","12"};
         ArrayAdapter <String> adapter1=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,mes);
         sp1.setAdapter(adapter1);
-        String [] anio ={"1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020"};
+        String [] anio ={"1981","1982","1983","1984","1985","1986","1987","1988","1990","1991","1992","1993","1994","1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009"};
         ArrayAdapter <String> adapter2=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,anio);
         sp2.setAdapter(adapter2);
 
@@ -128,7 +128,7 @@ public class Registro extends AppCompatActivity {
 
                     }
                     if(contadorCheck<3){
-                        Toast.makeText(Registro.this,"Esligaalmenos 3 asignaturas",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Registro.this,"Escoja al menos 3 asignaturas",Toast.LENGTH_LONG).show();
 
                     }
 

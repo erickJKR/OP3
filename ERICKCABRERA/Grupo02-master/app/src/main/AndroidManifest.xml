@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,10 +18,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        
+
         <activity android:name=".Main2Activity"></activity>
-        <activity android:name=".Listar" />
-        <activity android:name=".Registro" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Listar"  android:label="Datos de usuario" />
+        <activity android:name=".Registro" android:label="Ingrese sus datos" />
+        <activity android:name=".MainActivity" android:label="Iniciar Sesión en Grupo2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,5 +32,10 @@
             </intent-filter>
         </activity>
     </application>
+
+
+
+
+
 
 </manifest>

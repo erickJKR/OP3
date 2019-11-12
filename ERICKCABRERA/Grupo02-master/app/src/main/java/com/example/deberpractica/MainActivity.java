@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -94,8 +95,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
+public void salirApp(View view){
+        finish();
+}
+@Override
+public boolean onCreateOptionsMenu(Menu miMenu){
+getMenuInflater().inflate(R.menu.menu, miMenu);
+return true;
+}
 }
 
 
