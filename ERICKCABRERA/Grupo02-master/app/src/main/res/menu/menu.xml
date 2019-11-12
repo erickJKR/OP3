@@ -9,6 +9,4 @@
     <item android:id="@+id/salir"
         android:title="Cerrar App"/>
 
-
-
 </menu>
