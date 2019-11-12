@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btn2=(Button) findViewById(R.id.buttonRegistro);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
-        //cargarpreferencias();
+        cargarpreferencias();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,8 +110,8 @@ return true;
 }
 public void cargarpreferencias(){
     SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
-    String user=preferencias.getString( "user","No existe la informacion");
-    String pass=preferencias.getString("pass","No existe informacion");
+    String user=preferencias.getString( "user","");
+    String pass=preferencias.getString("pass","");
     usuarioTextView.setText(user);
     claveTextView.setText(pass);
 }
