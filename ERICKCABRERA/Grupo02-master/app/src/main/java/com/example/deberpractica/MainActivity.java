@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         //eliminarpreferencias();
                         cargarpreferencias();
-
+                        finish();
             }
         });
     }
