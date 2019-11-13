@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this,Registro.class);
                         //intent.putExtra()
                         startActivity(intent);
-                        eliminarpreferencias();
+                        //eliminarpreferencias();
                         cargarpreferencias();
 
             }
@@ -117,7 +117,12 @@ return true;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.login:
-
+                Intent intent=new Intent(MainActivity.this,MainActivity.class);
+                //intent.putExtra()
+                startActivity(intent);
+                eliminarpreferencias();
+                cargarpreferencias();
+                finish();
                 return true;
             case R.id.salir:
                 finish();
