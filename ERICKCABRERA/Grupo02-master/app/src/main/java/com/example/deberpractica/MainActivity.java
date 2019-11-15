@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +24,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     String claveTxt;
     private LeerArchivo archivos=new LeerArchivo();
     private ListaEstudiantes arch=new ListaEstudiantes();
+    private TextView textoservicio;
 
 
     @Override
@@ -43,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         btn2=(Button) findViewById(R.id.buttonRegistro);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
+        textoservicio=(TextView)findViewById(R.id.textView);
+        textoservicio.setText(getDato());
         cargarpreferencias();
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,6 +164,37 @@ return true;
         SharedPreferences.Editor editor=preferencias.edit();
         editor.clear();
         editor.commit();
+    }
+
+    public String getDato(){
+        String sql = "http://a937e38d.ngrok.io";
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        URL url = null;
+        String json = "";
+        HttpURLConnection conn;
+        try {
+            url = new URL(sql);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while((inputLine = in.readLine()) != null){
+                response.append(inputLine);
+            }
+
+            json = response.toString();
+
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 
 }
