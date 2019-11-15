@@ -119,6 +119,7 @@
         android:id="@+id/editText6"
         android:layout_width="170dp"
         android:layout_height="50dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="clave"
         android:inputType="textPersonName"
@@ -210,4 +211,15 @@
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/switch1"
         app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="117dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="40dp"
+        android:text="TestServicio"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

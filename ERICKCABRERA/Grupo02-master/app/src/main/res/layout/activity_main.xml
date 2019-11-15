@@ -81,9 +81,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="379dp"
-        android:layout_height="27dp"
+        android:layout_width="117dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="236dp"
         android:text="TestServicio"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

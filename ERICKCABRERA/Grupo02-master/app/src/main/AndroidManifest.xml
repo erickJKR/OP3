@@ -20,9 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        
 
-        <activity android:name=".Main2Activity"></activity>
         <activity android:name=".Listar"  android:label="Datos de usuario" />
         <activity android:name=".Registro" android:label="Ingrese sus datos" />
         <activity android:name=".MainActivity" android:label="Iniciar Sesión en Grupo2">

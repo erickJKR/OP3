@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -41,6 +42,10 @@ public class Registro extends AppCompatActivity {
     private Button btn1;
     private LeerArchivo archivos=new LeerArchivo();
     private ListaEstudiantes arch=new ListaEstudiantes();
+    private TextView textoservicio;
+
+
+    private ObtenerServicio obtener = new ObtenerServicio();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +68,8 @@ public class Registro extends AppCompatActivity {
         sp3=(Spinner)findViewById(R.id.spinner3);
         sw1=(Switch)findViewById(R.id.switch1);
         btn1=(Button) findViewById(R.id.button);
+        textoservicio=(TextView)findViewById(R.id.textView4);
+        textoservicio.setText(obtener.getDato());
 
         String [] dia ={"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15}","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
         ArrayAdapter <String> adapter=new ArrayAdapter <String> (this,android.R.layout.simple_list_item_1,dia);

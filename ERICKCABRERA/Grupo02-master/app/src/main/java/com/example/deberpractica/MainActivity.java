@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView textoservicio;
 
 
+    private ObtenerServicio obtener = new ObtenerServicio();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
         textoservicio=(TextView)findViewById(R.id.textView);
-        textoservicio.setText(getDato());
+        textoservicio.setText(obtener.getDato());
         cargarpreferencias();
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -166,36 +169,7 @@ return true;
         editor.commit();
     }
 
-    public String getDato(){
-        String sql = "http://a937e38d.ngrok.io";
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        URL url = null;
-        String json = "";
-        HttpURLConnection conn;
-        try {
-            url = new URL(sql);
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.connect();
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
 
-            while((inputLine = in.readLine()) != null){
-                response.append(inputLine);
-            }
-
-            json = response.toString();
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return json;
-    }
 
 }
 

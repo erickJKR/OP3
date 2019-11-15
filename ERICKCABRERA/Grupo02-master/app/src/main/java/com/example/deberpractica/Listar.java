@@ -32,10 +32,18 @@ public class Listar extends AppCompatActivity {
     private Spinner sp1;
     private LeerArchivo archivos=new LeerArchivo();
     ArrayList<String> usuariosDetalles;
+
+    private TextView textoservicio;
+
+
+    private ObtenerServicio obtener = new ObtenerServicio();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar);
+        textoservicio=(TextView)findViewById(R.id.textView5);
+        textoservicio.setText(obtener.getDato());
 
         usuariosListar = (TextView) findViewById(R.id.textView3);
         sp1=(Spinner)findViewById(R.id.spinner4);
