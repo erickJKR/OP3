@@ -98,9 +98,10 @@
         android:layout_marginEnd="104dp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintHorizontal_bias="0.614"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.629"
         app:srcCompat="@drawable/logiito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
