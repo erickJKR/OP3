@@ -1,4 +1,4 @@
-package com.example.deberpractica;
+package ec.edu.uce.optativa3.controlador;
 import java.io.Serializable;
 import java.util.ArrayList;
 

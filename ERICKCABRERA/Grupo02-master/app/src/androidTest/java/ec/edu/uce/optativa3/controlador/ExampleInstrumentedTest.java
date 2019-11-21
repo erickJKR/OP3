@@ -1,4 +1,4 @@
-package com.example.deberpractica;
+package ec.edu.uce.optativa3.controlador;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.deberpractica", appContext.getPackageName());
+        assertEquals("com.edu.uce", appContext.getPackageName());
     }
 }

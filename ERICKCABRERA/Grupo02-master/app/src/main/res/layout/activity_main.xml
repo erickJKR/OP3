@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C4110F0F"
-    tools:context=".MainActivity">
+    tools:context="ec.edu.uce.optativa3.controlador.MainActivity">
 
     <Button
         android:id="@+id/buttonIngreso"

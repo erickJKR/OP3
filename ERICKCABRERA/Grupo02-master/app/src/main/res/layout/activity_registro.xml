@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C4110F0F"
-    tools:context=".Registro">
+    tools:context="ec.edu.uce.optativa3.controlador.Registro">
 
     <Spinner
         android:id="@+id/spinner3"

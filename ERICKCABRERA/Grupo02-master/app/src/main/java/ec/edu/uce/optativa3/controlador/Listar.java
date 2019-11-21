@@ -1,4 +1,4 @@
-package com.example.deberpractica;
+package ec.edu.uce.optativa3.controlador;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,26 +7,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import com.example.deberpractica.R;
+
 import java.util.ArrayList;
 
 public class Listar extends AppCompatActivity {
@@ -106,8 +98,13 @@ public class Listar extends AppCompatActivity {
                 Toast.makeText(Listar.this,"Eliminar",Toast.LENGTH_LONG).show();
                 LeerArchivo lector1=new LeerArchivo();
                 ArrayList<String> listaestudiantes=lector1.leer();
-                if (listaestudiantes.size()>=0) {
+                SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+                String usuarioActuak=preferencias.getString("user","nousuario");
+
+                if ((!usuarioActuak.equals(usuarioi))) {
                     listaestudiantes.remove(posi);
+                }else{
+                    Toast.makeText(Listar.this,"No se puede eliminar, cierre sesion",Toast.LENGTH_LONG).show();
                 }
                 lector1.escribir(listaestudiantes);
                 ListaEstudiantes arch=new ListaEstudiantes();

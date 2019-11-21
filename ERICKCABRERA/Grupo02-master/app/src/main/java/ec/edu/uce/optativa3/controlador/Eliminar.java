@@ -1,4 +1,4 @@
-package com.example.deberpractica;
+package ec.edu.uce.optativa3.controlador;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.deberpractica.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

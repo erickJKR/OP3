@@ -1,6 +1,4 @@
-package com.example.deberpractica;
-
-import androidx.appcompat.app.AppCompatActivity;
+package ec.edu.uce.optativa3.controlador;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +6,8 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.example.deberpractica.R;
 
 public class splash extends Activity {
 

@@ -1,6 +1,5 @@
-package com.example.deberpractica;
+package ec.edu.uce.optativa3.controlador;
 
-import android.content.res.AssetManager;
 import android.os.StrictMode;
 import android.util.JsonReader;
 
@@ -8,7 +7,6 @@ import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;

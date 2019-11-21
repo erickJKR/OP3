@@ -17,8 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Eliminar"></activity>
-        <activity android:name=".splash">
+        <activity android:name="ec.edu.uce.optativa3.controlador.Eliminar"></activity>
+        <activity android:name="ec.edu.uce.optativa3.controlador.splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +26,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Listar"
+            android:name="ec.edu.uce.optativa3.controlador.Listar"
             android:label="Datos de usuario" />
         <activity
-            android:name=".Registro"
+            android:name="ec.edu.uce.optativa3.controlador.Registro"
             android:label="Ingrese sus datos" />
         <activity
-            android:name=".MainActivity"
+            android:name="ec.edu.uce.optativa3.controlador.MainActivity"
             android:label="Iniciar Sesión en Grupo2"></activity>
     </application>
 
