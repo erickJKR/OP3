@@ -81,22 +81,9 @@ public class LeerArchivo {
             fichero=new FileWriter(file);
             pw=new PrintWriter(fichero);
             for (int i = 0; i < listaestudiante.size(); i++) {
-                String [] parts = listaestudiante.get(i).split(" ");
-                //System.out.println(parts.length+"tamaño");
-                if (parts.length==10) {
-                    String usuarioi = parts[0];
-                    String clavei = parts[1];
-                    String nombre = parts[2];
-                    String apellido = parts[3];
-                    String email = parts[4];
-                    String telefono = parts[5];
-                    String genero = parts[6];
-                    String fecha = parts[7];
-                    String asignaturas = parts[8];
-                    String becado = parts[9];
-                    pw.println( usuarioi+ " " + clavei + " " + nombre + " " + apellido + " " + email + " " + telefono + " " + genero + " " + fecha + " " + asignaturas + " " + becado);
+                    pw.println(listaestudiante.get(i));
                     pw.flush();
-                }
+
             }
             pw.close();
         }catch(Exception e){

@@ -102,13 +102,26 @@ public class Listar extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Listar.this,"Es"+posi,Toast.LENGTH_LONG).show();
+
+                Toast.makeText(Listar.this,"Eliminar",Toast.LENGTH_LONG).show();
+                LeerArchivo lector1=new LeerArchivo();
+                ArrayList<String> listaestudiantes=lector1.leer();
+                if (listaestudiantes.size()>=0) {
+                    listaestudiantes.remove(posi);
+                }
+                lector1.escribir(listaestudiantes);
+                ListaEstudiantes arch=new ListaEstudiantes();
+                arch.escribir();
+                Intent intent=new Intent(Listar.this,Listar.class);
+                startActivity(intent);
+                finish();
+
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Listar.this,"Es"+posi,Toast.LENGTH_LONG).show();
+                Toast.makeText(Listar.this,"Es"+usuarioi,Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(Listar.this,Eliminar.class);
                 intent.putExtra("posi",posi);
                 intent.putExtra("usuarioi",usuarioi);
@@ -124,7 +137,7 @@ public class Listar extends AppCompatActivity {
 
                 startActivity(intent);
                 //eliminarpreferencias();
-                finish();
+
             }
         });
 

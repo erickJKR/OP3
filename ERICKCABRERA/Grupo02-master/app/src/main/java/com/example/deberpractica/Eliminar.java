@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,11 +18,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Eliminar extends AppCompatActivity {
 Bundle datos;
-    private EditText usuario;
-    private EditText clave;
+    //private EditText usuario;
+    //private EditText clave;
     private EditText nombre;
     private EditText apellido;
     private EditText email;
@@ -47,9 +50,9 @@ Bundle datos;
         String fechastr=datos.getString("fecha");
         String asignaturasstr=datos.getString("asignaturas");
         String becadostr=datos.getString("becado");
-        String usuarioistr=datos.getString("usuarioi");
-        String claveistr=datos.getString("clavei");
-        int pos=datos.getInt("posi");
+        final String usuarioistr=datos.getString("usuarioi");
+        final String claveistr=datos.getString("clavei");
+        final int pos=datos.getInt("posi");
         //usuario = (EditText) findViewById(R.id.editText5);
         //clave=(EditText)findViewById(R.id.editText6);
         nombre = (EditText) findViewById(R.id.editText9);
@@ -67,7 +70,7 @@ Bundle datos;
         sp2=(Spinner)findViewById(R.id.spinner8);
         sp3=(Spinner)findViewById(R.id.spinner5);
         sw1=(Switch)findViewById(R.id.switch2);
-        btn1=(Button) findViewById(R.id.button);
+        btn1=(Button) findViewById(R.id.button4);
         String [] parts = fechastr.split("/");
         //System.out.println(parts.length+"tamaño");
         String diastr="";
@@ -140,6 +143,98 @@ Bundle datos;
         }else{
             sw1.setChecked(false);
         }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //String usuarioTxt = (String) usuario.getText().toString();
+                //String claveTxt = (String) clave.getText().toString();
+                String nombreTxt = (String) nombre.getText().toString();
+                String apellidoTxt = (String) apellido.getText().toString();
+                String emailTxt = (String) email.getText().toString();
+                String celularTxt = (String) celular.getText().toString();
+                String generoTxt;
+                String becadoTxt;
+                String asignaturas = "";
+                if (rb1.isChecked() == true) {
+                    generoTxt = "hombre";
+                } else {
+                    generoTxt = "mujer";
+                }
+                int contadorCheck = 0;
+                if (check1.isChecked() == true) {
+                    asignaturas = asignaturas + "Ciencias-";
+                    contadorCheck = contadorCheck + 1;
+                }
+                if (check2.isChecked() == true) {
+                    asignaturas = asignaturas + "Filosofia-";
+                    contadorCheck = contadorCheck + 1;
+                }
+                if (check3.isChecked() == true) {
+                    asignaturas = asignaturas + "Matematicas-";
+                    contadorCheck = contadorCheck + 1;
+                }
+                if (check4.isChecked() == true) {
+                    asignaturas = asignaturas + "Informatica-";
+                    contadorCheck = contadorCheck + 1;
+                }
+                if (check5.isChecked() == true) {
+                    asignaturas = asignaturas + "Deporte-";
+                    contadorCheck = contadorCheck + 1;
+                }
+                String dia = sp1.getSelectedItem().toString();
+                String mes = sp2.getSelectedItem().toString();
+                String anio = sp3.getSelectedItem().toString();
+                String fechaTxt = dia + "/" + mes + "/" + anio;
+                if (sw1.isChecked() == true) {
+                    becadoTxt = "si";
+                } else {
+                    becadoTxt = "no";
+                }
+                if ( (contadorCheck >= 3)&& validarEntrada(nombreTxt) && validarEntrada(apellidoTxt) && validarEntrada(emailTxt) && validarEntrada(celularTxt)&&validarEmail(emailTxt)) {
 
+                    //archivos.escribir(usuarioistr, claveistr, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
+                    LeerArchivo lector1=new LeerArchivo();
+                    ArrayList<String> listaestudiantes=lector1.leer();
+                    String modificado=usuarioistr+ " " + claveistr + " " + nombreTxt + " " + apellidoTxt + " " + emailTxt + " " + celularTxt + " " + generoTxt+ " " + fechaTxt + " " + asignaturas + " " + becadoTxt;
+                    listaestudiantes.set(pos,modificado);
+                    lector1.escribir(listaestudiantes);
+                    arch.escribir();
+                    Intent intent = new Intent(Eliminar.this, MainActivity.class);
+                    //intent.putExtra()
+                    startActivity(intent);
+                    finish();
+                } else if (contadorCheck < 3) {
+                    Toast.makeText(Eliminar.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
+
+                }else if(!validarEmail(emailTxt)){
+                    Toast.makeText(Eliminar.this, "no se admite email", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(Eliminar.this, "no se admite caracter espacio", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+    public boolean validarEntrada(String str){
+        if (str.indexOf(" ")<0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean validarEmail(String str){
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher mather = pattern.matcher(str);
+
+        if (mather.find() == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
