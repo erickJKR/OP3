@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Eliminar">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="96dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@id/radioButton"
+        android:labelFor="@id/radioGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText13">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hombre"
+            android:textColor="#FFFFFF" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mujer"
+            android:textColor="#FFFFFF" />
+    </RadioGroup>
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="179dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="16dp"
+        android:text="Es becado?"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText13"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="telefono"
+        android:inputType="phone"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+
+    <Spinner
+        android:id="@+id/spinner8"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+
+        android:layout_marginBottom="292dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner7" />
+
+    <EditText
+        android:id="@+id/editText9"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="nombre"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="apellido"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/editText9"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText12"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="telefono"
+        android:inputType="phone"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/editText13"
+        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+
+    <Spinner
+        android:id="@+id/spinner5"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+
+        android:layout_marginBottom="292dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner8" />
+
+    <Spinner
+        android:id="@+id/spinner7"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+
+        android:layout_marginBottom="292dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="236dp"
+        android:text="Deporte"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox7" />
+
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="236dp"
+        android:text="Filosofia"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox8"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="132dp"
+        android:text="Ciencias"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox10"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/checkBox9"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:text="Matematicas"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/checkBox10"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+
+    <CheckBox
+        android:id="@+id/checkBox10"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="76dp"
+        android:text="Informatica"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="24dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

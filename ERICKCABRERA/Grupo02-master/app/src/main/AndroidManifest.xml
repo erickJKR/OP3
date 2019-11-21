@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Eliminar"></activity>
         <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,8 +33,7 @@
             android:label="Ingrese sus datos" />
         <activity
             android:name=".MainActivity"
-            android:label="Iniciar Sesión en Grupo2">
-        </activity>
+            android:label="Iniciar Sesión en Grupo2"></activity>
     </application>
 
 </manifest>

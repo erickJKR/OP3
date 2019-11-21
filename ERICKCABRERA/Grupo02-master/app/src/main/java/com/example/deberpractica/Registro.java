@@ -57,7 +57,7 @@ public class Registro extends AppCompatActivity {
         email = (EditText) findViewById(R.id.editText3);
         celular=(EditText)findViewById(R.id.editText4);
         rb1=(RadioButton)findViewById(R.id.radioButton);
-        rb2=(RadioButton)findViewById(R.id.radioButton);
+        rb2=(RadioButton)findViewById(R.id.radioButton2);
         check1=(CheckBox)findViewById(R.id.checkBox);
         check2=(CheckBox)findViewById(R.id.checkBox2);
         check3=(CheckBox)findViewById(R.id.checkBox3);
@@ -69,7 +69,7 @@ public class Registro extends AppCompatActivity {
         sw1=(Switch)findViewById(R.id.switch1);
         btn1=(Button) findViewById(R.id.button);
         textoservicio=(TextView)findViewById(R.id.textView4);
-        textoservicio.setText(obtener.getDato());
+//        textoservicio.setText(obtener.getDato());
 
         String [] dia ={"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15}","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
         ArrayAdapter <String> adapter=new ArrayAdapter <String> (this,android.R.layout.simple_list_item_1,dia);
@@ -119,9 +119,9 @@ public class Registro extends AppCompatActivity {
                     asignaturas = asignaturas + "Deporte-";
                     contadorCheck = contadorCheck + 1;
                 }
-                String dia = sp2.getSelectedItem().toString();
-                String mes = sp3.getSelectedItem().toString();
-                String anio = sp1.getSelectedItem().toString();
+                String dia = sp3.getSelectedItem().toString();
+                String mes = sp1.getSelectedItem().toString();
+                String anio = sp2.getSelectedItem().toString();
                 String fechaTxt = dia + "/" + mes + "/" + anio;
                 if (sw1.isChecked() == true) {
                     becadoTxt = "si";
