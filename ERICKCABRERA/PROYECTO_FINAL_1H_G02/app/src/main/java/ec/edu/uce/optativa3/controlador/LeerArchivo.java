@@ -14,6 +14,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import ec.edu.uce.optativa3.modelo.Estudiante;
+
 public class LeerArchivo {
     private String archivo = "miarchivo9";
     private String carpeta = "/Download/";

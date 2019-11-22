@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import ec.edu.uce.optativa3.modelo.Estudiante;
+
 public class ListaEstudiantes {
     Estudiante u;
     ArrayList<Estudiante> lista;

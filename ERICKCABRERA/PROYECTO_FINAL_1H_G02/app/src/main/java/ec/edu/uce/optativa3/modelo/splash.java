@@ -1,4 +1,4 @@
-package ec.edu.uce.optativa3.controlador;
+package ec.edu.uce.optativa3.modelo;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.WindowManager;
 
 import com.example.deberpractica.R;
+
+import ec.edu.uce.optativa3.vista.MainActivity;
 
 public class splash extends Activity {
 

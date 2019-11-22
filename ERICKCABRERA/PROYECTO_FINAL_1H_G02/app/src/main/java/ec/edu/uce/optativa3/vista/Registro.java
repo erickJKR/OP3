@@ -1,4 +1,4 @@
-package ec.edu.uce.optativa3.controlador;
+package ec.edu.uce.optativa3.vista;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +24,10 @@ import com.example.deberpractica.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import ec.edu.uce.optativa3.controlador.LeerArchivo;
+import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
+import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 
 public class Registro extends AppCompatActivity {
     private EditText usuario;

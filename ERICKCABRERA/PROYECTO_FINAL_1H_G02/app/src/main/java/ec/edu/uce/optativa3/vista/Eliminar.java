@@ -1,4 +1,4 @@
-package ec.edu.uce.optativa3.controlador;
+package ec.edu.uce.optativa3.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,6 +22,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import ec.edu.uce.optativa3.controlador.LeerArchivo;
+import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 
 public class Eliminar extends AppCompatActivity {
 Bundle datos;

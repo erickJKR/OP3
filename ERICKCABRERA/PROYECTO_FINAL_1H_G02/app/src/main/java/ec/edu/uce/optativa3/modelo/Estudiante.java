@@ -1,4 +1,4 @@
-package ec.edu.uce.optativa3.controlador;
+package ec.edu.uce.optativa3.modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
