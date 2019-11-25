@@ -7,12 +7,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import ec.edu.uce.optativa3.modelo.Estudiante;
 
 public class ListaEstudiantes {
     Estudiante u;
-    ArrayList<Estudiante> lista;
+    List<Estudiante> lista;
 
     private String archivo = "Json";
     private String carpeta = "/Download/";
@@ -22,7 +23,7 @@ public class ListaEstudiantes {
     LeerArchivo arch=new LeerArchivo();
 
     public ListaEstudiantes() {
-
+        lista=arch.cambiarEstudiante();
         this.archivo = archivo;
         this.file_path = (Environment.getExternalStorageDirectory() + this.carpeta);
         //this.file_path = (Environment.DIRECTORY_DOWNLOADS + this.carpeta);
