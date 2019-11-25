@@ -26,8 +26,8 @@
         android:id="@+id/buttonRegistro"
         android:layout_width="184dp"
         android:layout_height="61dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="12dp"
         android:background="#E91E63"
         android:fontFamily="sans-serif-medium"
         android:text="Registrarse"
@@ -39,7 +39,7 @@
     <EditText
         android:id="@+id/editText"
         android:layout_width="325dp"
-        android:layout_height="102dp"
+        android:layout_height="60dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="224dp"
         android:ems="10"
@@ -53,8 +53,8 @@
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="320dp"
-        android:layout_height="83dp"
+        android:layout_width="318dp"
+        android:layout_height="60dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="184dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-black"
         android:text="O prefieres"
         android:textColor="#0A0A0A"
@@ -95,8 +95,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="251dp"
-        android:layout_height="226dp"
+        android:layout_width="231dp"
+        android:layout_height="200dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="104dp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
