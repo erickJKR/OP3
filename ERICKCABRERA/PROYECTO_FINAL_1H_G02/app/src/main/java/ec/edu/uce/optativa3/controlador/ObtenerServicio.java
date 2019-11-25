@@ -15,7 +15,7 @@ import java.net.URL;
 public class ObtenerServicio {
 
     public String getDato(){
-        String sql = "http://635aa4eb.ngrok.io";
+        String sql = "http://test2.grupo02optativa3.dns-cloud.net/";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         URL url = null;
