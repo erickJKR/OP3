@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C4110F0F"
+    android:background="#00110F0F"
     tools:context="ec.edu.uce.optativa3.vista.MainActivity">
+
 
     <Button
         android:id="@+id/buttonIngreso"
-        android:layout_width="119dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="162dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="16dp"
         android:background="#E91E63"
         android:fontFamily="sans-serif-medium"
         android:text="Entrar"
@@ -23,10 +24,10 @@
 
     <Button
         android:id="@+id/buttonRegistro"
-        android:layout_width="152dp"
-        android:layout_height="44dp"
+        android:layout_width="184dp"
+        android:layout_height="61dp"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:background="#E91E63"
         android:fontFamily="sans-serif-medium"
         android:text="Registrarse"
@@ -37,33 +38,33 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="276dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="220dp"
+        android:layout_width="325dp"
+        android:layout_height="102dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="224dp"
         android:ems="10"
         android:hint="usuario"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textColor="#0a0a0a"
+        android:textColorHint="#0A0A0A"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="272dp"
-        android:layout_height="60dp"
+        android:layout_width="320dp"
+        android:layout_height="83dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:focusable="auto"
         android:hint="clave"
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
         android:singleLine="false"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
+        android:textColor="#0a0a0a"
+        android:textColorHint="#0A0A0A"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
@@ -73,10 +74,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
+        android:layout_marginStart="184dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
         android:text="O prefieres"
-        android:textColor="#FFFFFF"
+        android:textColor="#0A0A0A"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonIngreso" />
 
@@ -92,16 +95,31 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="193dp"
-        android:layout_height="177dp"
+        android:layout_width="251dp"
+        android:layout_height="226dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="104dp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
+        app:layout_constraintHorizontal_bias="0.82"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logiito" />
+
+    ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="29dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/uce2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

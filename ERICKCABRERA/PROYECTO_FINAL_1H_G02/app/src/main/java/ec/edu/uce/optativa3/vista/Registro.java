@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -44,7 +47,7 @@ public class Registro extends AppCompatActivity {
     private LeerArchivo archivos=new LeerArchivo();
     private ListaEstudiantes arch=new ListaEstudiantes();
     private TextView textoservicio;
-
+    ImageView   imagen;
 
     private ObtenerServicio obtener = new ObtenerServicio();
     @Override
@@ -70,6 +73,13 @@ public class Registro extends AppCompatActivity {
         sw1=(Switch)findViewById(R.id.switch1);
         btn1=(Button) findViewById(R.id.button);
         textoservicio=(TextView)findViewById(R.id.textView4);
+        imagen =(ImageView)findViewById(R.id.imageView6);
+
+
+
+
+
+
 //        textoservicio.setText(obtener.getDato());
 
         String [] dia ={"01","02","03","04","05","06","07","08","09","10","11","12","13","14","15}","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"};
@@ -208,4 +218,24 @@ public boolean validarEntrada(String str){
         editor.clear();
         editor.commit();
     }
+
+    public void onclick(View vista){
+        cargarImagen();
+    }
+    public void cargarImagen(){
+         Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("image/");
+            startActivityForResult(intent.createChooser(intent, "SELECCIONA LA APLICACION"),10);
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,requestCode,data);
+        if(resultCode==RESULT_OK){
+            Uri path=data.getData();
+            imagen.setImageURI(path);
+        }
+    }
+
+
 }
