@@ -26,7 +26,7 @@ def escribir():
 	#data = request.json['msg']
 	data = request.get_json()
 	f = open ('holamundo.txt','w');
-	f.write(data['msg']) 
+	f.write(data) 
 	f.close();
 	#mensaje="Se guardo en el servidor estudiantes";
 	#return jsonify({"msg": mensaje})
