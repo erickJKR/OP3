@@ -39,7 +39,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginBottom="16dp"
         android:text="Es becado?"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -51,7 +51,7 @@
         android:hint="email"
         android:inputType="textEmailAddress"
         android:textColor="#0a0a0a"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#0a0a0a"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText9" />
 
@@ -59,7 +59,7 @@
         android:id="@+id/spinner8"
         android:layout_width="120dp"
         android:layout_height="36dp"
-
+        android:textColor="#0a0a0a"
         android:layout_marginBottom="292dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinner7" />
@@ -73,7 +73,7 @@
         android:hint="nombre"
         android:inputType="textPersonName"
         android:textColor="#0a0a0a"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#0a0a0a"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,7 +86,7 @@
         android:hint="apellido"
         android:inputType="textPersonName"
         android:textColor="#0a0a0a"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#0a0a0a"
         app:layout_constraintStart_toEndOf="@+id/editText9"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,7 +98,7 @@
         android:hint="telefono"
         android:inputType="phone"
         android:textColor="#0a0a0a"
-        android:textColorHint="#FFFFFF"
+        android:textColorHint="#0a0a0a"
         app:layout_constraintStart_toEndOf="@+id/editText13"
         app:layout_constraintTop_toBottomOf="@+id/editText11" />
 
@@ -106,7 +106,7 @@
         android:id="@+id/spinner5"
         android:layout_width="120dp"
         android:layout_height="36dp"
-
+        android:textColor="#0a0a0a"
         android:layout_marginBottom="292dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinner8" />
@@ -115,7 +115,7 @@
         android:id="@+id/spinner7"
         android:layout_width="120dp"
         android:layout_height="36dp"
-
+        android:textColor="#0a0a0a"
         android:layout_marginBottom="292dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -126,7 +126,7 @@
         android:layout_height="32dp"
         android:layout_marginBottom="236dp"
         android:text="Deporte"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/checkBox7" />
 
@@ -137,7 +137,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginBottom="236dp"
         android:text="Filosofia"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -147,7 +147,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="132dp"
         android:text="Ciencias"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox10"
@@ -158,7 +158,7 @@
         android:layout_width="125dp"
         android:layout_height="32dp"
         android:text="Matematicas"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         app:layout_constraintStart_toEndOf="@+id/checkBox10"
         app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
 
@@ -168,7 +168,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="76dp"
         android:text="Informatica"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
 
@@ -178,7 +178,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginBottom="24dp"
-        android:text="Button"
+        android:text="Editar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
