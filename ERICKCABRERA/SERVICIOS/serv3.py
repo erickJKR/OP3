@@ -23,13 +23,14 @@ def mensaje1(num):
 @app.route('/escribir', methods=['POST'])
 def escribir():
 	#data = request.get_text();
-	data = request.json['msg']
-	#data = request.get_json()
+	#data = request.json['msg']
+	data = request.get_json()
 	f = open ('holamundo.txt','w');
-	f.write(data);
+	f.write(data['msg']) 
 	f.close();
-	mensaje="Se guardo en el servidor estudiantes";
-	return jsonify({"msg": mensaje})
+	#mensaje="Se guardo en el servidor estudiantes";
+	#return jsonify({"msg": mensaje})
+	return "holamundo"
 
 
 if __name__ == '__main__':

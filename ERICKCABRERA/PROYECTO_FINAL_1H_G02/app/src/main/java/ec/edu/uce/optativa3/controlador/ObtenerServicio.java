@@ -1,9 +1,21 @@
 package ec.edu.uce.optativa3.controlador;
 
+import android.content.Context;
 import android.os.StrictMode;
 import android.util.JsonReader;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +23,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ObtenerServicio {
     String sql = null;
@@ -75,5 +92,44 @@ public class ObtenerServicio {
         }
     }
 
+    public void RealizarPost(Context activity) {
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        String URL = "http://e7474e2f.ngrok.io/escribir";
+        StringRequest jsonObjRequest = new StringRequest(Request.Method.POST,
+                URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+
+                Map<String, String> postParam = new HashMap<String, String>();
+
+                postParam.put("msg", "asd@asd.com");
+
+
+
+                return postParam;
+            }
+
+        };
+
+        queue.add(jsonObjRequest);
+    }
 
 }
