@@ -45,7 +45,7 @@ public class Listar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar);
         textoservicio=(TextView)findViewById(R.id.textView5);
-        //textoservicio.setText(obtener.getDato());
+        textoservicio.setText(obtener.getDato(3));
 
         usuariosListar = (TextView) findViewById(R.id.textView3);
         sp1=(Spinner)findViewById(R.id.spinner4);
@@ -99,7 +99,7 @@ public class Listar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(Listar.this,"Eliminar",Toast.LENGTH_LONG).show();
+                Toast.makeText(Listar.this, obtener.getDato(2),Toast.LENGTH_LONG).show();
                 LeerArchivo lector1=new LeerArchivo();
                 ArrayList<String> listaestudiantes=lector1.leer();
                 SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);

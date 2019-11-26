@@ -22,14 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hombre"
-            android:textColor="#FFFFFF" />
+            android:textColor="#0a0a0a" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mujer"
-            android:textColor="#FFFFFF" />
+            android:textColor="#0a0a0a" />
     </RadioGroup>
 
     <Switch
@@ -50,7 +50,7 @@
         android:ems="10"
         android:hint="email"
         android:inputType="textEmailAddress"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText9" />
@@ -72,7 +72,7 @@
         android:ems="10"
         android:hint="nombre"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +85,7 @@
         android:ems="10"
         android:hint="apellido"
         android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/editText9"
         app:layout_constraintTop_toTopOf="parent" />
@@ -97,7 +97,7 @@
         android:ems="10"
         android:hint="telefono"
         android:inputType="phone"
-        android:textColor="#FFFFFF"
+        android:textColor="#0a0a0a"
         android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/editText13"
         app:layout_constraintTop_toBottomOf="@+id/editText11" />
@@ -181,5 +181,16 @@
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="317dp"
+        android:layout_marginTop="10dp"
+        android:text="TestServicio"
+        android:textColor="#0a0a0a"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

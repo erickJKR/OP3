@@ -13,9 +13,24 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ObtenerServicio {
+    String sql = null;
+    public String getDato(int dato){
+        switch (dato){
+            case 1:
+                 sql = "http://test2.grupo02optativa3.dns-cloud.net/oper/1";
+                break;
+            case 2:
+                 sql = "http://test2.grupo02optativa3.dns-cloud.net/oper/2";
+                break;
+            case 3:
+                 sql = "http://test2.grupo02optativa3.dns-cloud.net/";
+                break;
 
-    public String getDato(){
-        String sql = "http://test2.grupo02optativa3.dns-cloud.net/";
+            default:
+                 sql = "http://test2.grupo02optativa3.dns-cloud.net/oper/3";
+                break;
+    }
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         URL url = null;

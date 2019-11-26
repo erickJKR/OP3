@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
+import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 
 public class Eliminar extends AppCompatActivity {
 Bundle datos;
@@ -42,6 +43,8 @@ Bundle datos;
     private LeerArchivo archivos=new LeerArchivo();
     private ListaEstudiantes arch=new ListaEstudiantes();
     private TextView textoservicio;
+
+    ObtenerServicio mensaje ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +79,8 @@ Bundle datos;
         sp3=(Spinner)findViewById(R.id.spinner5);
         sw1=(Switch)findViewById(R.id.switch2);
         btn1=(Button) findViewById(R.id.button4);
+        textoservicio=(TextView)  findViewById(R.id.textView6);
+       // textoservicio.setText(mensaje.getDato(3));
         String [] parts = fechastr.split("/");
         //System.out.println(parts.length+"tamaño");
         String diastr="";
@@ -207,7 +212,9 @@ Bundle datos;
                     arch.escribir();
                     Intent intent = new Intent(Eliminar.this, MainActivity.class);
                     //intent.putExtra()
+                    Toast.makeText(Eliminar.this, mensaje.getDato(2), Toast.LENGTH_LONG).show();
                     startActivity(intent);
+
                     finish();
                 } else if (contadorCheck < 3) {
                     Toast.makeText(Eliminar.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
@@ -243,3 +250,4 @@ Bundle datos;
         }
     }
 }
+
