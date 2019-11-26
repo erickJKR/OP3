@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
         textoservicio=(TextView)findViewById(R.id.textView);
         textoservicio.setText(obtener.getDato(3));
+        obtener.RealizarPost(this);
         cargarpreferencias();
 
         btn1.setOnClickListener(new View.OnClickListener() {
