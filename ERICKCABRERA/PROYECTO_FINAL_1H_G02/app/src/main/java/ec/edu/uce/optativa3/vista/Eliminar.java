@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -258,6 +259,11 @@ Bundle datos;
         } else {
             return false;
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu miMenu){
+        getMenuInflater().inflate(R.menu.menu, miMenu);
+        return true;
     }
 
     public void eliminarpreferencias(){

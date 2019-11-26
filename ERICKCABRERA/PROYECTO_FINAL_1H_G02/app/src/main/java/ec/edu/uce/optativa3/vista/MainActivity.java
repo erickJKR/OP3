@@ -111,9 +111,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-public void salirApp(View view){
-        finish();
-}
+
 @Override
 public boolean onCreateOptionsMenu(Menu miMenu){
 getMenuInflater().inflate(R.menu.menu, miMenu);
