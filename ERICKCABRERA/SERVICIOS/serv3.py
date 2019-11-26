@@ -1,3 +1,4 @@
+import json
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 
@@ -25,8 +26,10 @@ def escribir():
 	#data = request.get_text();
 	#data = request.json['msg']
 	data = request.get_json()
+	n = json.dumps(data)
+	o = json.loads(n)
 	f = open ('holamundo.txt','w');
-	f.write(data) 
+	f.write(o['msg']) 
 	f.close();
 	#mensaje="Se guardo en el servidor estudiantes";
 	#return jsonify({"msg": mensaje})
