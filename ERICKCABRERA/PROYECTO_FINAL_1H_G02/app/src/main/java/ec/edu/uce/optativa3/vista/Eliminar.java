@@ -1,10 +1,15 @@
 package ec.edu.uce.optativa3.vista;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -220,10 +225,10 @@ Bundle datos;
                             startActivity(intent);
                             finish();
                         }
-                    }, 3000);
+                    }, 2000);
 
                 } else if (contadorCheck < 3) {
-                    Toast.makeText(Eliminar.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Eliminar.this, "Elija al menos 3 asignaturas", Toast.LENGTH_LONG).show();
 
                 }else if(!validarEmail(emailTxt)){
                     Toast.makeText(Eliminar.this, "no se admite email", Toast.LENGTH_LONG).show();
@@ -254,6 +259,37 @@ Bundle datos;
         } else {
             return false;
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu miMenu){
+        getMenuInflater().inflate(R.menu.menu, miMenu);
+        return true;
+    }
+
+    public void eliminarpreferencias(){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferencias.edit();
+        editor.clear();
+        editor.commit();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.login:
+                Intent intent=new Intent(Eliminar.this,MainActivity.class);
+                //intent.putExtra()
+                startActivity(intent);
+                eliminarpreferencias();
+                finish();
+                return true;
+            case R.id.salir:
+                finish();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 
