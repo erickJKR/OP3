@@ -7,15 +7,15 @@ def index():
 		some_json= request.get_text();
 		return jsonify({'you:sent' : some_json}),201
 	else:
-		return jsonify({"msg": "Hello Wordl!"})
+		return jsonify({"msg": "Grupo 02"})
 
 @app.route('/oper/<int:num>', methods=['GET'])
 def mensaje1(num):
 	mensaje="indefinido";
 	if(num==1):
-		mensaje="Editado";
+		mensaje="“El Estudiante se ha eliminado correctamente";
 	if(num==2):
-		mensaje="Editado";
+		mensaje="“El Estudiante se ha editado correctamente";
 	if(num==3):
 		mensaje="Error";
 	return jsonify({"msg": mensaje})

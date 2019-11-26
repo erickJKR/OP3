@@ -6,7 +6,7 @@ api= Api(app)
 
 class MensajeGrupo2(Resource):
 	def get(self):
-		return {'msg':'SERVICIO GRUPO02'}
+		return {'msg':'SERVICIO GRUPO 02'}
 	
 api.add_resource(MensajeGrupo2,'/')
 
