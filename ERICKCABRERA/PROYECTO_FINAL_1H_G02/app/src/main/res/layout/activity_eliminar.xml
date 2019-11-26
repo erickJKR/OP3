@@ -17,19 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText13">
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hombre"
-            android:textColor="#0a0a0a" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mujer"
-            android:textColor="#0a0a0a" />
     </RadioGroup>
 
     <Switch
@@ -42,18 +29,6 @@
         android:textColor="#0a0a0a"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editText13"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="email"
-        android:inputType="textEmailAddress"
-        android:textColor="#0a0a0a"
-        android:textColorHint="#0a0a0a"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
 
     <Spinner
         android:id="@+id/spinner8"
@@ -68,7 +43,8 @@
         android:id="@+id/editText9"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
         android:ems="10"
         android:hint="nombre"
         android:inputType="textPersonName"
@@ -78,17 +54,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/editText13"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
-        android:hint="apellido"
-        android:inputType="textPersonName"
+        android:hint="email"
+        android:inputType="textEmailAddress"
         android:textColor="#0a0a0a"
         android:textColorHint="#0a0a0a"
-        app:layout_constraintStart_toEndOf="@+id/editText9"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText9" />
 
     <EditText
         android:id="@+id/editText12"
@@ -101,6 +77,37 @@
         android:textColorHint="#0a0a0a"
         app:layout_constraintStart_toEndOf="@+id/editText13"
         app:layout_constraintTop_toBottomOf="@+id/editText11" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hombre"
+        android:textColor="#0a0a0a"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mujer"
+        android:textColor="#0a0a0a"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="226dp" />
+
+    <EditText
+        android:id="@+id/editText11"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:hint="apellido"
+        android:inputType="textPersonName"
+        android:textColor="#0a0a0a"
+        android:textColorHint="#0a0a0a"
+        app:layout_constraintStart_toEndOf="@+id/editText9"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinner5"
