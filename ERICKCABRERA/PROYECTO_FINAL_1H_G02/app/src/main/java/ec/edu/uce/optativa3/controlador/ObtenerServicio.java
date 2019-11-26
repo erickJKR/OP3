@@ -96,41 +96,31 @@ public class ObtenerServicio {
     public void RealizarPost(Context activity) {
         RequestQueue queue = Volley.newRequestQueue(activity);
         String URL = "http://e7474e2f.ngrok.io/escribir";
-        StringRequest jsonObjRequest = new StringRequest(Request.Method.POST,
-                URL,
+        final String[] respuesta = {"test prueba3"};
+        StringRequest postRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        respuesta[0] = response;
                     }
-                }, new Response.ErrorListener() {
-
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }
+        ) {
             @Override
-            public void onErrorResponse(VolleyError error) {
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                // the POST parameters:
+                params.put("msg", "Pepito Grillo");
+                return params;
             }
-        }) {
-
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded; charset=UTF-8";
-            }
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-
-                Map<String, String> postParam = new HashMap<String, String>();
-
-                postParam.put("msg", "asd@asd.com");
-
-
-
-                return postParam;
-            }
-
         };
-
-        queue.add(jsonObjRequest);
+        //Volley.newRequestQueue(activity).add(postRequest);
+        queue.add(postRequest);
     }
 
 }
