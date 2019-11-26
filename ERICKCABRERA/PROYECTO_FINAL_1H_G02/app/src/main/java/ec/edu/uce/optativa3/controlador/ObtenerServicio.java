@@ -52,19 +52,15 @@ public class ObtenerServicio {
             }
 
             json = response.toString();
-
-
+            Mensaje msg  = new Gson().fromJson(json, Mensaje.class);
+            return msg.getMsg();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            return "test prueba1";
         } catch (IOException e) {
             e.printStackTrace();
+            return "test prueba2";
         }
-
-        Mensaje msg  = new Gson().fromJson(json, Mensaje.class);
-
-        return msg.getMsg();
-
-
     }
 
     class Mensaje{

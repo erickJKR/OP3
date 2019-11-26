@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,7 +45,7 @@ Bundle datos;
     private ListaEstudiantes arch=new ListaEstudiantes();
     private TextView textoservicio;
 
-    ObtenerServicio mensaje ;
+    ObtenerServicio mensaje =new ObtenerServicio() ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -210,12 +211,17 @@ Bundle datos;
                     listaestudiantes.set(pos,modificado);
                     lector1.escribir(listaestudiantes);
                     arch.escribir();
-                    Intent intent = new Intent(Eliminar.this, MainActivity.class);
-                    //intent.putExtra()
-                    Toast.makeText(Eliminar.this, mensaje.getDato(2), Toast.LENGTH_LONG).show();
-                    startActivity(intent);
+                    Toast.makeText(Eliminar.this, mensaje.getDato(2), Toast.LENGTH_SHORT).show();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            Intent intent = new Intent(Eliminar.this, MainActivity.class);
+                            //intent.putExtra()
+                            startActivity(intent);
+                            finish();
+                        }
+                    }, 3000);
 
-                    finish();
                 } else if (contadorCheck < 3) {
                     Toast.makeText(Eliminar.this, "Esliga al menos 3 asignaturas", Toast.LENGTH_LONG).show();
 
