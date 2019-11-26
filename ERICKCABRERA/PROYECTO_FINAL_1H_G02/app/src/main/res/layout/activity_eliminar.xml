@@ -37,7 +37,7 @@
         android:layout_width="179dp"
         android:layout_height="37dp"
         android:layout_marginStart="96dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:text="Es becado?"
         android:textColor="#0a0a0a"
         app:layout_constraintBottom_toTopOf="@+id/button4"
@@ -54,15 +54,6 @@
         android:textColorHint="#0a0a0a"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText9" />
-
-    <Spinner
-        android:id="@+id/spinner8"
-        android:layout_width="120dp"
-        android:layout_height="36dp"
-        android:textColor="#0a0a0a"
-        android:layout_marginBottom="292dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner7" />
 
     <EditText
         android:id="@+id/editText9"
@@ -103,64 +94,31 @@
         app:layout_constraintTop_toBottomOf="@+id/editText11" />
 
     <Spinner
+        android:id="@+id/spinner7"
+        android:layout_width="120dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="268dp"
+        android:textColor="#0a0a0a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
         android:id="@+id/spinner5"
         android:layout_width="120dp"
         android:layout_height="36dp"
+        android:layout_marginBottom="268dp"
         android:textColor="#0a0a0a"
-        android:layout_marginBottom="292dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinner8" />
 
     <Spinner
-        android:id="@+id/spinner7"
+        android:id="@+id/spinner8"
         android:layout_width="120dp"
         android:layout_height="36dp"
-        android:textColor="#0a0a0a"
-        android:layout_marginBottom="292dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBox6"
-        android:layout_width="125dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="236dp"
-        android:text="Deporte"
+        android:layout_marginBottom="268dp"
         android:textColor="#0a0a0a"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBox7" />
-
-    <CheckBox
-        android:id="@+id/checkBox7"
-        android:layout_width="125dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="236dp"
-        android:text="Filosofia"
-        android:textColor="#0a0a0a"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBox8"
-        android:layout_width="125dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="132dp"
-        android:text="Ciencias"
-        android:textColor="#0a0a0a"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox10"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <CheckBox
-        android:id="@+id/checkBox9"
-        android:layout_width="125dp"
-        android:layout_height="32dp"
-        android:text="Matematicas"
-        android:textColor="#0a0a0a"
-        app:layout_constraintStart_toEndOf="@+id/checkBox10"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+        app:layout_constraintStart_toEndOf="@+id/spinner7" />
 
     <CheckBox
         android:id="@+id/checkBox10"
@@ -172,12 +130,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox7" />
 
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="212dp"
+        android:text="Filosofia"
+        android:textColor="#0a0a0a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="212dp"
+        android:text="Deporte"
+        android:textColor="#0a0a0a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBox7" />
+
+    <CheckBox
+        android:id="@+id/checkBox9"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:text="Matematicas"
+        android:textColor="#0a0a0a"
+        app:layout_constraintStart_toEndOf="@+id/checkBox10"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+
+    <CheckBox
+        android:id="@+id/checkBox8"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="132dp"
+        android:text="Ciencias"
+        android:textColor="#0a0a0a"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox10"
+        app:layout_constraintVertical_bias="0.013" />
+
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="4dp"
         android:text="Editar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
