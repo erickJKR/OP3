@@ -29,7 +29,7 @@ def escribir():
 	n = json.dumps(data)
 	o = json.loads(n)
 	f = open ('holamundo.txt','w');
-	f.write(o['msg']) 
+	f.write(str(o)) 
 	f.close();
 	#mensaje="Se guardo en el servidor estudiantes";
 	#return jsonify({"msg": mensaje})
