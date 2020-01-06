@@ -29,9 +29,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import ec.edu.uce.optativa3.controlador.DaoEstudiante;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
+import ec.edu.uce.optativa3.modelo.Estudiante;
 
 public class Eliminar extends AppCompatActivity {
 Bundle datos;
@@ -67,6 +69,7 @@ Bundle datos;
         final String usuarioistr=datos.getString("usuarioi");
         final String claveistr=datos.getString("clavei");
         final int pos=datos.getInt("posi");
+        final DaoEstudiante dao=new DaoEstudiante(Eliminar.this);
         //usuario = (EditText) findViewById(R.id.editText5);
         //clave=(EditText)findViewById(R.id.editText6);
         nombre = (EditText) findViewById(R.id.editText9);
@@ -210,12 +213,18 @@ Bundle datos;
                 if ( (contadorCheck >= 3)&& validarEntrada(nombreTxt) && validarEntrada(apellidoTxt) && validarEntrada(emailTxt) && validarEntrada(celularTxt)&&validarEmail(emailTxt)) {
 
                     //archivos.escribir(usuarioistr, claveistr, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
-                    LeerArchivo lector1=new LeerArchivo();
-                    ArrayList<String> listaestudiantes=lector1.leer();
+
+
                     String modificado=usuarioistr+ " " + claveistr + " " + nombreTxt + " " + apellidoTxt + " " + emailTxt + " " + celularTxt + " " + generoTxt+ " " + fechaTxt + " " + asignaturas + " " + becadoTxt;
-                    listaestudiantes.set(pos,modificado);
-                    lector1.escribir(listaestudiantes);
-                    arch.escribir();
+                    
+                    Estudiante es=dao.getEstudiante(usuarioistr,claveistr);
+                    if(dao.updateEstudiante(es)){
+                        Toast.makeText(Eliminar.this, "Editado correctamente "+ usuarioistr, Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(Eliminar.this, "Error al editar", Toast.LENGTH_SHORT).show();
+                    }
+
+
                     Toast.makeText(Eliminar.this, mensaje.getDato(2), Toast.LENGTH_SHORT).show();
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {

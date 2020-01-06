@@ -44,15 +44,6 @@ public class DaoEstudiante {
     }
 
 
-    public boolean eliminarEstudiante(Estudiante e){
-        if(buscar(e.getUsuario())==0 ){
-            String[] argumentos = {String.valueOf(e.getId())};
-            return (sql.delete("estudiante", "id = ?", argumentos)>0);
-        }else{
-            return false;
-        }
-    }
-
 
     public int buscar(String e){
         int x=0;
@@ -114,6 +105,24 @@ public class DaoEstudiante {
             }while(cr.moveToNext());
         }
         return lista;
+    }
+    public boolean updateEstudiante(Estudiante e){
+        ContentValues cv=new ContentValues();
+        cv.put("usuario",e.getUsuario());
+        cv.put("clave",e.getClave());
+        cv.put("nombre",e.getNombre());
+        cv.put("apellido",e.getApellido());
+        cv.put("email",e.getEmail());
+        cv.put("celular",e.getCelular());
+        cv.put("genero",e.getGenero());
+        cv.put("fechaNacimiento",e.getFechaNacimiento());
+        cv.put("becado",e.getBecado());
+        cv.put("foto",e.getFoto());
+        cv.put("asignatura",e.getAsignatura());
+        return (sql.update("estudiante",cv,"id="+e.getId(),null)>0);
+    }
+    public boolean deleteEstudiante(int id){
+        return (sql.delete("estudiante","id="+id,null))>0;
     }
     public int login(String u,String p){
         int a=0;

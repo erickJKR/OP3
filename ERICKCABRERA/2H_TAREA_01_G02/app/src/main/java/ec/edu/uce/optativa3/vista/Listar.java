@@ -91,7 +91,8 @@ public class Listar extends AppCompatActivity {
                             becado = parts[10];
                             String detallesUsuarioElegido = "nombre: " + nombre + "\n" + "apellido: " + apellido + "\n" + "email: " + email + "\n" + "telefono: " + telefono + "\n" + "genero: " + genero + "\n" + "fecha: " + fecha + "\n" + "asignatura: " + asignaturas + "\n" + "becado: " + becado;
                             usuariosListar.setText(detallesUsuarioElegido);
-                            es=dao.getUsuarioID(Integer.valueOf(id1));
+                            es=dao.getUsuarioID((int)Integer.valueOf(id1));
+                            System.out.println("id de estudiante"+id1);
                         }else{
                             Toast.makeText(Listar.this,"ERROR DE ENTRADA DE DATOS",Toast.LENGTH_LONG).show();
 
@@ -110,7 +111,11 @@ public class Listar extends AppCompatActivity {
                 SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
                 String usuarioActuak=preferencias.getString("user","nousuario");
                 System.out.println(es.toString());
-                dao.eliminarEstudiante(es);
+                if (dao.deleteEstudiante(es.getId())){
+                    Toast.makeText(Listar.this,"Eliminado estudiante "+usuarioi,Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(Listar.this,"Error al eliminar"+usuarioi,Toast.LENGTH_LONG).show();
+                }
                 Intent intent=new Intent(Listar.this,Listar.class);
                 startActivity(intent);
                 finish();
