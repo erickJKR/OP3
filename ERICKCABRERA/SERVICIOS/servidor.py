@@ -19,6 +19,8 @@ def mensaje1(num):
 		mensaje="El Estudiante se ha editado correctamente";
 	if(num==3):
 		mensaje="Error";
+	if(num==4):
+		mensaje="Bienvenido al Examen";
 	return jsonify({"msg": mensaje})
 
 @app.route('/escribir', methods=['POST'])

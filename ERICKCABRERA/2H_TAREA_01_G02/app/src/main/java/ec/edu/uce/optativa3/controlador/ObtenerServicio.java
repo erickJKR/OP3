@@ -69,8 +69,9 @@ public class ObtenerServicio {
             }
 
             json = response.toString();
-            Mensaje msg  = new Gson().fromJson(json, Mensaje.class);
-            return msg.getMsg();
+//            Mensaje msg  = new Gson().fromJson(json, Mensaje.class);
+            //return msg.getMsg();
+            return "jp";
         } catch (MalformedURLException e) {
             e.printStackTrace();
             return "test prueba1";

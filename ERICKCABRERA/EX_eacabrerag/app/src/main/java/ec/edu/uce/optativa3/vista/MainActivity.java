@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.example.deberpractica.R;
 
 import java.util.ArrayList;
 
-import ec.edu.uce.optativa3.controlador.DaoUsuario;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
@@ -32,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText claveTextView;
     String usuarioTxt;
     String claveTxt;
+    private LeerArchivo archivos=new LeerArchivo();
+    private ListaEstudiantes arch=new ListaEstudiantes();
     private TextView textoservicio;
+
+
     private ObtenerServicio obtener = new ObtenerServicio();
 
 
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
         textoservicio=(TextView)findViewById(R.id.textView);
-       // textoservicio.setText(obtener.getDato(3));
+        textoservicio.setText(obtener.getDato(3));
         //obtener.RealizarPost(this);
         cargarpreferencias();
 
@@ -54,31 +56,53 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 usuarioTxt= (String) usuarioTextView.getText().toString();
                 claveTxt= (String) claveTextView.getText().toString();
-                DaoUsuario dao=new DaoUsuario(MainActivity.this);
-                if (dao.login(usuarioTxt,claveTxt)>0) {
-//                    Toast.makeText(MainActivity.this, obtener.servicioExamen(), Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this,"Usuario y clave correcto",Toast.LENGTH_LONG).show();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
+
+                ArrayList<String> usuariosDetalles =archivos.leer();
+                ArrayList<String> usuariosAreglos= new ArrayList<String>();
+                ArrayList<String> claveAreglos= new ArrayList<String>();;
+                for (int i = 0; i < usuariosDetalles.size(); i++) {
+                    System.out.println(usuariosDetalles.get(i)+"leer");
+                    String [] parts = usuariosDetalles.get(i).split(" ");
+                    System.out.println(parts.length+"tamaño");
+                    String usuarioi = parts[0];
+                    System.out.println(usuarioi+" vector usuario");
+                    String clavei = parts[1];
+                    System.out.println(usuarioi + " - " + clavei);
+                    usuariosAreglos.add(usuarioi);
+                    claveAreglos.add(clavei);
+                    // }
+                }
+
+                for (int i = 0; i < usuariosDetalles.size(); i++) {
+                    if (usuariosAreglos.get(i).equals(usuarioTxt)){
+                        if(claveAreglos.get(i).equals(claveTxt)){
+                            System.out.println("Usuario y clave correcto");
+                            Toast.makeText(MainActivity.this,"Usuario y clave correcto",Toast.LENGTH_LONG).show();
                             Intent intent=new Intent(MainActivity.this,Listar.class);
                             //intent.putExtra()
                             startActivity(intent);
                             guardarpreferencias();
                             finish();
-                        }
-                    }, 2000);
-                } else{
 
-                            Toast.makeText(MainActivity.this,"Credenciales incorectas",Toast.LENGTH_LONG).show();
+                        }else{
+                            System.out.println("Clave incorrecta");
+                            Toast.makeText(MainActivity.this,"Clave incorrecta",Toast.LENGTH_LONG).show();
                         }
-
+                        break;
+                    }else{
+                        if (i==usuariosAreglos.size()-1){
+                            System.out.println("No existe Usuario");
+                            Toast.makeText(MainActivity.this,"No existe Usuario",Toast.LENGTH_LONG).show();
+                        }
                     }
+                }
+
+            }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,RegistroUsuario.class);
+                Intent intent=new Intent(MainActivity.this,Registro.class);
                         //intent.putExtra()
                         startActivity(intent);
                         //eliminarpreferencias();

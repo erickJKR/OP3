@@ -1,24 +1,49 @@
 1.Ejecutar el siguiente comando en consola para levantar el servicio
-python serv2.py
+python servidor.py
 
 2.Publicar el servicio por Ngrok con el siguiente comando
 ngrok http 5000
 
-3.Una vez levantado el servicio, podemos obsservar como se consume el servicio en la aplicación.
+3.Una vez levantado el servicio, podemos observar como se consume el servicio en la aplicación.
 
 Resumen de Api Flask
 
-from flask import Flask, request   ---->importamos librerias de flask
-from flask_restful import Resource, Api--->importamos libreria para utilizar restful
+import json
+from flask import Flask, jsonify, request
+app = Flask(__name__)
 
-app= Flask(__name__)
-api= Api(app)
+@app.route('/', methods=['GET', 'POST' ])
+def index():
+	if(request.method== 'POST'):
+		some_json= request.get_text();
+		return jsonify({'you:sent' : some_json}),201
+	else:
+		return jsonify({"msg": "Grupo 02"})
 
-class MensajeGrupo2(Resource):-->A esta clase le asignamos el método GET(HTTP) que devuelve el mensaje
-	def get(self):
-		return {'msg':'SERVICIO GRUPO02'}-->Mensaje que emite el servicio
-	
-api.add_resource(MensajeGrupo2,'/')-->Asignamos el patch para el consumir el servicio
+@app.route('/oper/<int:num>', methods=['GET'])
+def mensaje1(num):				-->Recibe un parametro que determina el tipo de mensaje para cada acción
+	mensaje="indefinido";
+	if(num==1):
+		mensaje="El Estudiante se ha eliminado correctamente";
+	if(num==2):
+		mensaje="El Estudiante se ha editado correctamente";
+	if(num==3):
+		mensaje="Se produjo un problema en ediccion/eliminacion";
+	return jsonify({"msg": mensaje})
+
+@app.route('/escribir', methods=['POST'])	-->Recibe un json que guarda los estudiantes
+def escribir():
+	#data = request.get_text();
+	#data = request.json['msg']
+	data = request.get_json()
+	n = json.dumps(data)
+	o = json.loads(n)
+	f = open ('listado.txt','w');		-->En este archivo guardamos el listado de estudiantes
+	f.write(str(o)) 
+	f.close();
+	#mensaje="Se guardo en el servidor estudiantes";
+	#return jsonify({"msg": mensaje})
+	return "holamundo"
 
 
 if __name__ == '__main__':
