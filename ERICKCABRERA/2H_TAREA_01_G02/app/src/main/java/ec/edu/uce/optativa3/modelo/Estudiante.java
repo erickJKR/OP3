@@ -147,6 +147,6 @@ public class Estudiante implements Serializable {
 
     @Override
     public String toString() {
-        return id +" "+usuario+" "+ clave +" "+nombre+" "+apellido +" "+ email +" "+ celular+" "+ genero +" "+fechaNacimiento+ " "+ becado + " "+asignatura;
+        return id +" "+usuario+" "+ clave +" "+nombre+" "+apellido +" "+ email +" "+ celular+" "+ genero +" "+fechaNacimiento + " "+asignatura+ " "+ becado;
     }
 }

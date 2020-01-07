@@ -182,23 +182,23 @@ Bundle datos;
                 }
                 int contadorCheck = 0;
                 if (check1.isChecked() == true) {
-                    asignaturas = asignaturas + "Ciencias-";
-                    contadorCheck = contadorCheck + 1;
-                }
-                if (check2.isChecked() == true) {
                     asignaturas = asignaturas + "Filosofia-";
                     contadorCheck = contadorCheck + 1;
                 }
-                if (check3.isChecked() == true) {
-                    asignaturas = asignaturas + "Matematicas-";
+                if (check2.isChecked() == true) {
+                    asignaturas = asignaturas + "Deporte-";
                     contadorCheck = contadorCheck + 1;
                 }
-                if (check4.isChecked() == true) {
+                if (check3.isChecked() == true) {
                     asignaturas = asignaturas + "Informatica-";
                     contadorCheck = contadorCheck + 1;
                 }
+                if (check4.isChecked() == true) {
+                    asignaturas = asignaturas + "Matematicas-";
+                    contadorCheck = contadorCheck + 1;
+                }
                 if (check5.isChecked() == true) {
-                    asignaturas = asignaturas + "Deporte-";
+                    asignaturas = asignaturas + "Ciencias-";
                     contadorCheck = contadorCheck + 1;
                 }
                 String dia = sp1.getSelectedItem().toString();
