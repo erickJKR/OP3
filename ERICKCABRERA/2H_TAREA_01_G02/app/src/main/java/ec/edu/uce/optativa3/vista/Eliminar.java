@@ -61,7 +61,7 @@ Bundle datos;
         String nombrestr=datos.getString("nombre");
         String apellidostr=datos.getString("apellido");
         String telefonostr=datos.getString("telefono");
-        String emailstr=datos.getString("email");
+        final String emailstr=datos.getString("email");
         String generostr=datos.getString("genero");
         String fechastr=datos.getString("fecha");
         String asignaturasstr=datos.getString("asignaturas");
@@ -211,13 +211,18 @@ Bundle datos;
                     becadoTxt = "no";
                 }
                 if ( (contadorCheck >= 3)&& validarEntrada(nombreTxt) && validarEntrada(apellidoTxt) && validarEntrada(emailTxt) && validarEntrada(celularTxt)&&validarEmail(emailTxt)) {
+                    String modificado=usuarioistr+ " " + claveistr + " " + nombreTxt + " " + apellidoTxt + " "
+                            + emailTxt + " " + celularTxt + " " + generoTxt+ " " + fechaTxt + " " + asignaturas + " " + becadoTxt;
 
-                    //archivos.escribir(usuarioistr, claveistr, nombreTxt, apellidoTxt, emailTxt, celularTxt, generoTxt, fechaTxt, asignaturas, becadoTxt);
-
-
-                    String modificado=usuarioistr+ " " + claveistr + " " + nombreTxt + " " + apellidoTxt + " " + emailTxt + " " + celularTxt + " " + generoTxt+ " " + fechaTxt + " " + asignaturas + " " + becadoTxt;
-                    
                     Estudiante es=dao.getEstudiante(usuarioistr,claveistr);
+                    es.setNombre(nombreTxt);
+                    es.setApellido(apellidoTxt);
+                    es.setEmail(emailTxt);
+                    es.setCelular(celularTxt);
+                    es.setGenero(generoTxt);
+                    es.setFechaNacimiento(fechaTxt);
+                    es.setAsignatura(asignaturas);
+                    es.setBecado(becadoTxt);
                     if(dao.updateEstudiante(es)){
                         Toast.makeText(Eliminar.this, "Editado correctamente "+ usuarioistr, Toast.LENGTH_SHORT).show();
                     }else{
