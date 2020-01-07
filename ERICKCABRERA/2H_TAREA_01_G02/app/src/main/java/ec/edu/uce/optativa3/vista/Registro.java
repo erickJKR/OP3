@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -25,14 +26,17 @@ import android.widget.Toast;
 
 import com.example.deberpractica.R;
 
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ec.edu.uce.optativa3.controlador.DaoEstudiante;
+import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 import ec.edu.uce.optativa3.modelo.Estudiante;
+import ec.edu.uce.optativa3.modelo.Logs;
 
 public class Registro extends AppCompatActivity {
     private EditText usuario;
@@ -211,7 +215,9 @@ public boolean validarEntrada(String str){
                 Intent intent=new Intent(Registro.this,MainActivity.class);
                 //intent.putExtra()
                 startActivity(intent);
+                guardarpreferencias("fin");
                 eliminarpreferencias();
+
                 //cargarpreferencias();
                 finish();
                 return true;
@@ -247,6 +253,16 @@ public boolean validarEntrada(String str){
             imagen.setImageURI(path);
         }
     }
-
+    public void guardarpreferencias(String tipo){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        DaoLogs daoLogs=new DaoLogs(Registro.this);
+        String user=preferencias.getString( "user","");
+        String inicio=tipo;
+        String fin=preferencias.getString("fin","");
+        String modelo=preferencias.getString("modelo","");
+        String androidVersion=preferencias.getString("androidVersion","");
+        daoLogs.insertLogs(new Logs(user,inicio,fin,modelo,androidVersion));
+        System.out.println("......"+user+" " + inicio+" "+ fin+" "+inicio+" "+modelo+" "+androidVersion+".............");
+    }
 
 }

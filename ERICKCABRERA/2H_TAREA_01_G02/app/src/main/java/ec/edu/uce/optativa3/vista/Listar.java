@@ -22,10 +22,12 @@ import com.example.deberpractica.R;
 import java.util.ArrayList;
 
 import ec.edu.uce.optativa3.controlador.DaoEstudiante;
+import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 import ec.edu.uce.optativa3.modelo.Estudiante;
+import ec.edu.uce.optativa3.modelo.Logs;
 
 public class Listar extends AppCompatActivity {
     private Button btn1;
@@ -168,7 +170,9 @@ public class Listar extends AppCompatActivity {
                 Intent intent=new Intent(Listar.this,MainActivity.class);
 
                 startActivity(intent);
+                guardarpreferencias("fin");
                 eliminarpreferencias();
+
                 //cargarpreferencias();
                 finish();
                 return true;
@@ -187,6 +191,16 @@ public class Listar extends AppCompatActivity {
         editor.commit();
     }
 
-
+    public void guardarpreferencias(String tipo){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        DaoLogs daoLogs=new DaoLogs(Listar.this);
+        String user=preferencias.getString( "user","");
+        String inicio=tipo;
+        String fin=preferencias.getString("fin","");
+        String modelo=preferencias.getString("modelo","");
+        String androidVersion=preferencias.getString("androidVersion","");
+        daoLogs.insertLogs(new Logs(user,inicio,fin,modelo,androidVersion));
+        System.out.println("......"+user+" " + inicio+" "+ fin+" "+inicio+" "+modelo+" "+androidVersion+".............");
+    }
 }
 

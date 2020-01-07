@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +17,11 @@ import android.widget.Toast;
 
 import com.example.deberpractica.R;
 
+import java.util.Date;
+
+import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.DaoUsuario;
+import ec.edu.uce.optativa3.modelo.Logs;
 import ec.edu.uce.optativa3.modelo.Usuario;
 
 public class RegistroUsuario extends AppCompatActivity {
@@ -48,11 +53,21 @@ public class RegistroUsuario extends AppCompatActivity {
                 }else{
                     Toast.makeText(RegistroUsuario.this,"Usuario ya registrado",Toast.LENGTH_LONG).show();
                 }
+                Intent intent=new Intent(RegistroUsuario.this,MainActivity.class);
+                //intent.putExtra()
+                startActivity(intent);
 
             }
         });
+
     }
 
+    public void eliminarpreferencias(){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=preferencias.edit();
+        editor.clear();
+        editor.commit();
+    }
 
 
 
@@ -69,7 +84,9 @@ public class RegistroUsuario extends AppCompatActivity {
                 Intent intent=new Intent(RegistroUsuario.this,MainActivity.class);
                 //intent.putExtra()
                 startActivity(intent);
-                //eliminarpreferencias();
+                guardarpreferencias("fin");
+                eliminarpreferencias();
+
                 //cargarpreferencias();
                 finish();
                 return true;
@@ -81,6 +98,15 @@ public class RegistroUsuario extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
+    public void guardarpreferencias(String tipo){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        DaoLogs daoLogs=new DaoLogs(RegistroUsuario.this);
+        String user=preferencias.getString( "user","");
+        String inicio=tipo;
+        String fin=preferencias.getString("fin","");
+        String modelo=preferencias.getString("modelo","");
+        String androidVersion=preferencias.getString("androidVersion","");
+        daoLogs.insertLogs(new Logs(user,inicio,fin,modelo,androidVersion));
+        System.out.println("......"+user+" " + inicio+" "+ fin+" "+inicio+" "+modelo+" "+androidVersion+".............");
+    }
 }

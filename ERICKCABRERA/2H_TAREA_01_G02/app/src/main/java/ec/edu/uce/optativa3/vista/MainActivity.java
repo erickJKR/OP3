@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -19,11 +20,14 @@ import android.widget.Toast;
 import com.example.deberpractica.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.DaoUsuario;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
+import ec.edu.uce.optativa3.modelo.Logs;
 
 public class MainActivity extends AppCompatActivity {
     private Button btn1;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent=new Intent(MainActivity.this,Listar.class);
                             //intent.putExtra()
                             startActivity(intent);
-                            guardarpreferencias();
+                            guardarpreferencias("inicio");
                             finish();
                         }
                     }, 2000);
@@ -118,18 +122,35 @@ return true;
     SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
     String user=preferencias.getString( "user","");
     String pass=preferencias.getString("pass","");
+    String inicio=preferencias.getString( "inicio","");
+    String fin=preferencias.getString("fin","");
+    String modelo=preferencias.getString("modelo","");
+    String androidVersion=preferencias.getString("androidVersion","");
     usuarioTextView.setText(user);
     claveTextView.setText(pass);
 }
 
-    public void guardarpreferencias(){
+    public void guardarpreferencias(String tipo){
         SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
         String user= usuarioTextView.getText().toString();
         String pass= claveTextView.getText().toString();
+        String inicio=tipo;
+        String fin= new Date(Build.TIME).toString();
+        String modelo=android.os.Build.DEVICE;
+        String release = Build.VERSION.RELEASE;
+        int sdkVersion = Build.VERSION.SDK_INT;
+        String androidVersion="Android SDK: " + sdkVersion + " (" + release +")";;
         SharedPreferences.Editor editor=preferencias.edit();
         editor.putString("user",user);
         editor.putString("pass",pass);
+        editor.putString("inicio",inicio);
+        editor.putString("fin",fin);
+        editor.putString("modelo",modelo);
+        editor.putString("androidVersion",androidVersion);
         editor.commit();
+        DaoLogs daoLogs=new DaoLogs(MainActivity.this);
+        daoLogs.insertLogs(new Logs(user,inicio,fin,modelo,androidVersion));
+        System.out.println("......"+user+" " + inicio+" "+ fin+" "+inicio+" "+modelo+" "+androidVersion+".............");
     }
     public void eliminarpreferencias(){
         SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
@@ -137,8 +158,6 @@ return true;
         editor.clear();
         editor.commit();
     }
-
-
 
 }
 

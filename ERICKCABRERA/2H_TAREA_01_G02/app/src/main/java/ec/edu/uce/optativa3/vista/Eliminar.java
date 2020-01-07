@@ -30,10 +30,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ec.edu.uce.optativa3.controlador.DaoEstudiante;
+import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 import ec.edu.uce.optativa3.modelo.Estudiante;
+import ec.edu.uce.optativa3.modelo.Logs;
 
 public class Eliminar extends AppCompatActivity {
 Bundle datos;
@@ -294,6 +296,7 @@ Bundle datos;
                 Intent intent=new Intent(Eliminar.this,MainActivity.class);
                 //intent.putExtra()
                 startActivity(intent);
+                guardarpreferencias("fin");
                 eliminarpreferencias();
                 finish();
                 return true;
@@ -304,6 +307,17 @@ Bundle datos;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void guardarpreferencias(String tipo){
+        SharedPreferences preferencias=getSharedPreferences("credenciales", Context.MODE_PRIVATE);
+        DaoLogs daoLogs=new DaoLogs(Eliminar.this);
+        String user=preferencias.getString( "user","");
+        String inicio=tipo;
+        String fin=preferencias.getString("fin","");
+        String modelo=preferencias.getString("modelo","");
+        String androidVersion=preferencias.getString("androidVersion","");
+        daoLogs.insertLogs(new Logs(user,inicio,fin,modelo,androidVersion));
+        System.out.println("......"+user+" " + inicio+" "+ fin+" "+inicio+" "+modelo+" "+androidVersion+".............");
     }
 }
 
