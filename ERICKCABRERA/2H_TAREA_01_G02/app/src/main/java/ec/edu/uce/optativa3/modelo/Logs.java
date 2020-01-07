@@ -1,12 +1,12 @@
 package ec.edu.uce.optativa3.modelo;
 
 public class Logs {
-    int id;
-    String usuario;
-    String inicio;
-    String fin;
-    String modelo;
-    String androidVersion;
+    private int id;
+    private String usuario;
+    private String inicio;
+    private String fin;
+    private String modelo;
+    private String androidVersion;
 
     public Logs() {
     }

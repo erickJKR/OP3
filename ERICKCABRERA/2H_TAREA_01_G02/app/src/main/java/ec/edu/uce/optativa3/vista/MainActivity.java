@@ -18,9 +18,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.deberpractica.R;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.DaoUsuario;
@@ -32,12 +36,15 @@ import ec.edu.uce.optativa3.modelo.Logs;
 public class MainActivity extends AppCompatActivity {
     private Button btn1;
     private Button btn2;
+    private Button btn3;
     private EditText usuarioTextView;
     private EditText claveTextView;
     String usuarioTxt;
     String claveTxt;
     private TextView textoservicio;
     private ObtenerServicio obtener = new ObtenerServicio();
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
 
     @Override
@@ -46,13 +53,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn1=(Button) findViewById(R.id.buttonIngreso);
         btn2=(Button) findViewById(R.id.buttonRegistro);
+        btn3=(Button) findViewById(R.id.button7);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
         textoservicio=(TextView)findViewById(R.id.textView);
        // textoservicio.setText(obtener.getDato(3));
         //obtener.RealizarPost(this);
         cargarpreferencias();
-
+        inicializarFirebase();
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                             guardarpreferencias("inicio");
                             finish();
                         }
-                    }, 2000);
+                    }, 200);
                 } else{
 
                             Toast.makeText(MainActivity.this,"Credenciales incorectas",Toast.LENGTH_LONG).show();
@@ -83,11 +91,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,RegistroUsuario.class);
-                        //intent.putExtra()
-                        startActivity(intent);
-                        //eliminarpreferencias();
-                        cargarpreferencias();
-                        finish();
+                //intent.putExtra()
+                startActivity(intent);
+                //eliminarpreferencias();
+                cargarpreferencias();
+                finish();
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                guardarLogsBDCentral();
             }
         });
     }
@@ -158,7 +172,19 @@ return true;
         editor.clear();
         editor.commit();
     }
-
+    private void inicializarFirebase() {
+        FirebaseApp.initializeApp(this);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference = firebaseDatabase.getReference();
+    }
+    public void guardarLogsBDCentral(){
+        DaoLogs daoLogs=new DaoLogs(MainActivity.this);
+        ArrayList<Logs>lista=daoLogs.selectLogs();
+        for(Logs us:lista){
+            databaseReference.child("Logs").child(UUID.randomUUID().toString()).setValue(us);
+        }
+    }
 }
 
 
