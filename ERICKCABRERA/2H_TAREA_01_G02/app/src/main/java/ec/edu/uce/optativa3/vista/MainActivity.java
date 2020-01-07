@@ -70,16 +70,16 @@ public class MainActivity extends AppCompatActivity {
                 if (dao.login(usuarioTxt,claveTxt)>0) {
 //                    Toast.makeText(MainActivity.this, obtener.servicioExamen(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(MainActivity.this,"Usuario y clave correcto",Toast.LENGTH_LONG).show();
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        public void run() {
+                   // Handler handler = new Handler();
+                    //handler.postDelayed(new Runnable() {
+                        //public void run() {
                             Intent intent=new Intent(MainActivity.this,Listar.class);
                             //intent.putExtra()
                             startActivity(intent);
                             guardarpreferencias("inicio");
                             finish();
-                        }
-                    }, 200);
+                     //   }
+                    //}, 200);
                 } else{
 
                             Toast.makeText(MainActivity.this,"Credenciales incorectas",Toast.LENGTH_LONG).show();
