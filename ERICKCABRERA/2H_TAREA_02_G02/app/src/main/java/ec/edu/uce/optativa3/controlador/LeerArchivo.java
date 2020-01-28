@@ -3,8 +3,7 @@ package ec.edu.uce.optativa3.controlador;
 import android.os.Environment;
 
 import com.google.gson.Gson;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.xml.StaxDriver;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -193,18 +192,7 @@ public class LeerArchivo {
 
         return arrayDataEstudiante;
     }
-    public String estudianteToXml(){
-        ArrayList<String> listasStrEstudiantes=this.leer();
-        ArrayList<Estudiante> listasEstudiantes=this.cambiarEstudiante();
-        XStream xstream = new XStream();
-        xstream.alias("estudiante", Estudiante.class);
-        xstream.alias("estudiantes", ListaEstudiantes.class);
-        xstream.addImplicitCollection(ListaEstudiantes.class, "list");
-        ListaEstudiantes list = new ListaEstudiantes();
-        String xml = xstream.toXML(list);
-        System.out.println(xml);
-        return xml;
-    }
+
 
     public void LeerEstudiantes() {
 

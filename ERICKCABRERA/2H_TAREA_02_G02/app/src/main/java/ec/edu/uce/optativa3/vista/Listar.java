@@ -25,6 +25,7 @@ import ec.edu.uce.optativa3.controlador.DaoEstudiante;
 import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
+import ec.edu.uce.optativa3.controlador.MapsActivity;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 import ec.edu.uce.optativa3.modelo.Estudiante;
 import ec.edu.uce.optativa3.modelo.Logs;
@@ -33,6 +34,7 @@ public class Listar extends AppCompatActivity {
     private Button btn1;
     private Button btn2;
     private Button btn3;
+    private Button btn4;
 
     private TextView usuariosListar;
     private Spinner sp1;
@@ -57,6 +59,7 @@ public class Listar extends AppCompatActivity {
         btn1=(Button) findViewById(R.id.button2);
         btn2=(Button) findViewById(R.id.button3);
         btn3=(Button) findViewById(R.id.button6);
+        btn4=(Button) findViewById(R.id.button8);
         final DaoEstudiante dao=new DaoEstudiante(Listar.this);
         final ArrayList<String>[] usuariosAreglos = new ArrayList[]{dao.leerColumna(1)};
         ArrayList<String> claveAreglos= dao.leerColumna(2);;
@@ -151,6 +154,15 @@ public class Listar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Listar.this,Registro.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Listar.this, MapsActivity.class);
                 startActivity(intent);
                 finish();
             }

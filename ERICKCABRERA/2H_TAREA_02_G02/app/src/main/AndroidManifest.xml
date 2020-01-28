@@ -11,6 +11,11 @@
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBreP0Zt-G8f4BZ1oXXNj7oVDdgNvZNqmQ" />
+
+
     <application
         android:name="ec.edu.uce.optativa3.controlador.Notificaciones"
         android:allowBackup="true"
