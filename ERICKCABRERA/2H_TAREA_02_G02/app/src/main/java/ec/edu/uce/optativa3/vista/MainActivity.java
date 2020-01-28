@@ -3,9 +3,14 @@ package ec.edu.uce.optativa3.vista;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +38,7 @@ import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 import ec.edu.uce.optativa3.modelo.Logs;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private Button btn1;
     private Button btn2;
     private Button btn3;
@@ -45,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     private ObtenerServicio obtener = new ObtenerServicio();
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    TextView textviewsensor;
+    SensorManager sensorManager;
+    Sensor sensor1;
 
 
     @Override
@@ -54,9 +62,12 @@ public class MainActivity extends AppCompatActivity {
         btn1=(Button) findViewById(R.id.buttonIngreso);
         btn2=(Button) findViewById(R.id.buttonRegistro);
         btn3=(Button) findViewById(R.id.button7);
+        textviewsensor=(TextView)findViewById(R.id.textView7);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
         textoservicio=(TextView)findViewById(R.id.textView);
+        sensorManager = (SensorManager)getSystemService(Service.SENSOR_SERVICE) ;
+        sensor1=sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
        // textoservicio.setText(obtener.getDato(3));
         //obtener.RealizarPost(this);
         cargarpreferencias();
@@ -184,6 +195,30 @@ return true;
         for(Logs us:lista){
             databaseReference.child("Logs").child(UUID.randomUUID().toString()).setValue(us);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this,sensor1 ,SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if(event.sensor.getType()==Sensor.TYPE_LIGHT){
+            textviewsensor.setText(""+event.values[0]);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
 
