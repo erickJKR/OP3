@@ -35,6 +35,7 @@ import ec.edu.uce.optativa3.controlador.DaoLogs;
 import ec.edu.uce.optativa3.controlador.DaoUsuario;
 import ec.edu.uce.optativa3.controlador.LeerArchivo;
 import ec.edu.uce.optativa3.controlador.ListaEstudiantes;
+import ec.edu.uce.optativa3.controlador.MapsActivity;
 import ec.edu.uce.optativa3.controlador.ObtenerServicio;
 import ec.edu.uce.optativa3.modelo.Logs;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button btn1;
     private Button btn2;
     private Button btn3;
+    private Button btn4;
     private EditText usuarioTextView;
     private EditText claveTextView;
     String usuarioTxt;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         btn1=(Button) findViewById(R.id.buttonIngreso);
         btn2=(Button) findViewById(R.id.buttonRegistro);
         btn3=(Button) findViewById(R.id.button7);
+
         textviewsensor=(TextView)findViewById(R.id.textView7);
         usuarioTextView = (EditText) findViewById(R.id.editText);//texto de ingreso de usuario
         claveTextView=(EditText)findViewById(R.id.editText2);//texto de ingreso de clave
@@ -115,7 +118,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 guardarLogsBDCentral();
             }
         });
+
+
     }
+
 
 @Override
 public boolean onCreateOptionsMenu(Menu miMenu){
@@ -220,6 +226,8 @@ return true;
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+
 }
 
 

@@ -79,7 +79,7 @@ public class Listar extends AppCompatActivity {
                                 Toast.LENGTH_LONG).show();
 
                         posi =posicion;
-                        usuariosDetalles=dao.selectStringEstudiante();
+                        usuariosDetalles=dao.selectStringEstudianteApellido();
                         String [] parts = usuariosDetalles.get(posicion).split(" ");
                         //System.out.println(parts.length+"tamaño");
                         if (parts.length==11) {

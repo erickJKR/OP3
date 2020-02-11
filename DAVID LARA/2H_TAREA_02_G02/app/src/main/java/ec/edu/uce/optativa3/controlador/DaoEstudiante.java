@@ -81,6 +81,31 @@ public class DaoEstudiante {
         }
         return lista;
     }
+    public ArrayList<String> selectStringEstudianteApellido(){
+        ArrayList<String> lista =new ArrayList<String>();
+        lista.clear();
+        Cursor cr = sql.rawQuery("select * from estudiante  order by apellido",null);
+        if(cr!=null&&cr.moveToFirst()){
+            do{
+                Estudiante e=new Estudiante();
+                e.setId(cr.getInt(0));
+                e.setUsuario(cr.getString(1));
+                e.setClave(cr.getString(2));
+                e.setNombre(cr.getString(3));
+                e.setApellido(cr.getString(4));
+                e.setEmail(cr.getString(5));
+                e.setCelular(cr.getString(6));
+                e.setFoto(cr.getString(7));
+                e.setGenero(cr.getString(8));
+                e.setFechaNacimiento(cr.getString(9));
+                e.setBecado(cr.getString(10));
+                e.setAsignatura(cr.getString(11));
+                lista.add(e.toString());
+
+            }while(cr.moveToNext());
+        }
+        return lista;
+    }
     public ArrayList<Estudiante> selectEstudiante(){
         ArrayList<Estudiante> lista =new ArrayList<Estudiante>();
         lista.clear();
