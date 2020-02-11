@@ -127,6 +127,7 @@ public class Listar extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (asignaturas.equals("no")){
                 Toast.makeText(Listar.this,"Es"+usuarioi,Toast.LENGTH_LONG).show();
                 Intent intent=new Intent(Listar.this,Eliminar.class);
                 intent.putExtra("id1",id1);
@@ -143,6 +144,9 @@ public class Listar extends AppCompatActivity {
 
                 startActivity(intent);
                 //eliminarpreferencias();
+                }else{
+                    Toast.makeText(Listar.this,"Imposible editar estudiantes becados",Toast.LENGTH_LONG).show();
+                }
 
             }
         });
